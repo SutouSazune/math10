@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Math Speed - Information</title>
+    <link
+      rel="icon"
+      href="../learn/assets/images/math-logo.svg"
+      type="image/svg+xml"
+    />
+    <style>
+      html,
+      body {
+        font-family: "Arial", sans-serif;
+        line-height: 1.6;
+        margin: 0;
+        padding: 0;
+        background-color: #f4f4f9;
+        color: #333;
+        overflow-x: hidden;
+        overflow-y: auto; /* Allow vertical scrolling */
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+      }
+      header {
+        background: #4caf50;
+        color: white;
+        padding: 0.2rem 0;
+        text-align: center;
+        position: relative;
+        animation: fadeIn 2s ease-in-out;
+      }
+      header h1 {
+        margin: 0;
+        font-size: 3.5rem;
+      }
+      header img {
+        position: absolute;
+        top: 50%;
+        left: 1rem;
+        transform: translateY(-50%);
+        height: 100px;
+        width: auto;
+        animation: float 3s ease-in-out infinite;
+      }
+      main {
+        max-width: 800px;
+        margin: 2rem auto;
+        padding: 1rem;
+        background: white;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        animation: slideIn 1s ease-out;
+        flex: 1;
+      }
+      section {
+        margin-bottom: 2rem;
+      }
+      section h2 {
+        color: #4caf50;
+        font-size: 1.8rem;
+        margin-bottom: 0.5rem;
+      }
+      footer {
+        text-align: center;
+        padding: 1rem 0;
+        background: #333;
+        color: white;
+        margin-top: 2rem;
+        animation: slideIn 1s ease-out;
+      }
+      /* Custom scrollbar styling */
+      ::-webkit-scrollbar {
+        width: 10px;
+        height: 10px;
+      }
+
+      ::-webkit-scrollbar-track {
+        background: #f1f1f1; /* Light gray background */
+        border-radius: 10px;
+      }
+
+      ::-webkit-scrollbar-thumb {
+        background: #388e3c; /* Dark green thumb */
+        border-radius: 10px;
+        border: 2px solid #f1f1f1; /* Adds padding around the thumb */
+      }
+
+      ::-webkit-scrollbar-thumb:hover {
+        background: #2e7d32; /* Slightly darker green on hover */
+      }
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+      @keyframes slideIn {
+        from {
+          transform: translateY(20px);
+          opacity: 0;
+        }
+        to {
+          transform: translateY(0);
+          opacity: 1;
+        }
+      }
+      @keyframes float {
+        0%,
+        100% {
+          transform: translateY(-50%) translateX(0);
+        }
+        50% {
+          transform: translateY(-50%) translateX(5px);
+        }
+      }
+      .particle {
+        position: absolute;
+        background: rgba(255, 255, 255, 0.8);
+        border-radius: 50%;
+        pointer-events: none;
+        animation: moveParticle 5s linear infinite;
+      }
+      @keyframes moveParticle {
+        from {
+          transform: translateY(100vh) translateX(0);
+          opacity: 1;
+        }
+        to {
+          transform: translateY(-10vh) translateX(50px);
+          opacity: 0;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <img
+        src="../learn/assets/images/math-logo.svg"
+        class="favicon"
+        alt="Math Speed Logo"
+      />
+      <h1>Math Speed</h1>
+      <p style="color: rgba(192, 192, 192, 0.984)">Ôn luyện là chìa khoá.</p>
+      <a
+        href="../hub"
+        style="
+          position: absolute;
+          top: 10px;
+          right: 10px;
+          background: linear-gradient(45deg, #4caf50, #81c784);
+          color: white;
+          padding: 0.8rem 1.5rem;
+          border-radius: 30px;
+          text-decoration: none;
+          font-size: 1.2rem;
+          font-weight: bold;
+          box-shadow: 0 6px 8px rgba(0, 0, 0, 0.1);
+          transition: transform 0.3s ease, box-shadow 0.3s ease;
+        "
+        onmouseover="this.style.transform='scale(1.1)'; this.style.boxShadow='0 8px 12px rgba(0, 0, 0, 0.2)';"
+        onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 6px 8px rgba(0, 0, 0, 0.1)';"
+      >
+        Trở về
+      </a>
+    </header>
+    <main>
+      <section>
+        <h2>About Math Speed</h2>
+        <p>
+          Math Speed is an innovative tool designed to help users improve their
+          mathematical skills through speed and accuracy. Whether you're a
+          student, teacher, or math enthusiast, Math Speed offers a fun and
+          engaging way to practice math.
+        </p>
+      </section>
+      <section>
+        <h2>Features</h2>
+        <p>- Interactive math challenges to test your speed and accuracy.</p>
+        <p>- Progress tracking to monitor your improvement over time.</p>
+        <p>- Customizable difficulty levels to suit all skill levels.</p>
+      </section>
+      <section>
+        <h2>How to Use</h2>
+        <p>1. Select a difficulty level that matches your skill.</p>
+        <p>2. Start solving math problems as quickly as you can.</p>
+        <p>3. Track your progress and aim to improve your score!</p>
+      </section>
+    </main>
+    <footer>
+      <p>&copy; 2025 Math Speed. All rights reserved.</p>
+    </footer>
+    <script>
+      // Particle effect
+      const body = document.body;
+      for (let i = 0; i < 50; i++) {
+        const particle = document.createElement("div");
+        particle.classList.add("particle");
+        particle.style.width = `${Math.random() * 5 + 2}px`;
+        particle.style.height = particle.style.width;
+        particle.style.left = `${Math.random() * 100}vw`;
+        particle.style.animationDuration = `${Math.random() * 3 + 2}s`;
+        body.appendChild(particle);
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,418 @@
+* {
+  margin: 0;
+  padding: 0;
+  user-select: none;
+  box-sizing: border-box;
+  font-family: "Roboto", Arial, sans-serif; /* Font hiện đại và dễ đọc */
+}
+html, body {
+  height: 100%;
+  overflow-x: hidden; /* Prevent horizontal scrolling */
+}
+
+@media (max-width: 768px) {
+  .screen {
+    margin-top: 20px;
+    padding: 0 10px;
+  }
+
+  .top-section {
+    height: auto;
+    padding: 10px;
+    text-align: center;
+  }
+
+  .learn-link {
+    left: 10px;
+    top: 10px;
+    width: 60px;
+    height: 60px;
+  }
+
+  .rules-container, .history-exam {
+    width: 100%;
+    padding: 20px;
+  }
+
+  .exam-container {
+    grid-template-columns: 1fr;
+    row-gap: 20px;
+  }
+
+  .exam-name, .delete-exam, .access-exam {
+    font-size: 20px;
+    text-align: center;
+  }
+
+  .cta-button {
+    font-size: 1.2rem;
+    padding: 10px;
+  }
+}
+body {
+  background-color: #f5f7fa; /* Tông màu nền nhẹ nhàng */
+  color: #2c3e50; /* Tông màu chữ đậm hơn để dễ đọc */
+}
+
+.screen {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+  margin-top: 30px;
+}
+
+.top-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  height: 100px;
+  width: 100%;
+  background: linear-gradient(135deg, #2980b9, #6dd5fa); /* Gradient header */
+  color: white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.learn-link {
+  position: absolute;
+  left: 50px;
+  top: 10%;
+  width: 80px;
+  height: 80px;
+  cursor: pointer;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: white;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.learn-link:hover {
+  transform: scale(1.1);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+}
+
+.learn-link img {
+  width: 50px;
+  height: 50px;
+}
+
+h1 {
+  margin: 0;
+  font-size: 2rem;
+  text-align: center;
+}
+
+.rules-container,
+.history-exam {
+  width: 90%;
+  max-width: 800px;
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 30px 40px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  margin-top: 40px;
+  text-align: left;
+}
+
+.rules-container h1,
+.history-exam h1 {
+  font-size: 2.5rem;
+  text-align: center;
+  color: #2980b9;
+  margin-bottom: 20px;
+  border-bottom: 2px solid #ecf0f1;
+  padding-bottom: 10px;
+}
+
+.introduction {
+  font-size: 1.2rem;
+  color: #7f8c8d;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.rule {
+  margin-bottom: 30px;
+}
+
+.rule h2 {
+  font-size: 1.6rem;
+  color: #3498db;
+  margin-bottom: 10px;
+}
+
+.rule p {
+  font-size: 1.2rem;
+  color: #34495e;
+  line-height: 1.6;
+  margin-bottom: 10px;
+}
+
+.time-input-group {
+  font-size: 1.2rem;
+  display: flex;
+  align-items: center;
+  border: 2px solid #dfe6e9;
+  border-radius: 8px;
+  padding: 10px 15px;
+  margin-top: 10px;
+  background: #f9f9f9;
+}
+
+.time-input-group label {
+  margin-right: 10px;
+  color: #636e72;
+}
+
+.time-input-group input {
+  font-size: 1.2rem;
+  width: 80px;
+  border: 1px solid #bdc3c7;
+  border-radius: 5px;
+  padding: 5px;
+  text-align: center;
+  transition: border-color 0.3s ease;
+}
+
+.time-input-group input:focus {
+  outline: none;
+  border-color: #2980b9;
+}
+
+.cta-button {
+  display: block;
+  width: 100%;
+  padding: 15px;
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-align: center;
+  background-color: #27ae60;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  margin-top: 20px;
+}
+
+.cta-button:hover {
+  background-color: #2ecc71;
+  transform: translateY(-2px);
+}
+
+@media (max-width: 768px) {
+  .rules-container {
+    padding: 20px;
+  }
+
+  .time-input-group {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .time-input-group label {
+    margin-bottom: 10px;
+  }
+}
+
+.exam-container {
+  display: grid;
+  grid-template-columns: 40% 30% 30%;
+  column-gap: 10px;
+  row-gap: 10px;
+  align-items: center;
+  width: 100%;
+  background-color: rgb(230, 230, 230);
+  padding: 20px;
+  margin-bottom: 10px;
+}
+
+.exam-container:nth-child(odd) {
+  background-color: rgb(240, 240, 240);
+}
+
+.exam-name {
+  font-size: 25px;
+  font-weight: 500;
+}
+
+.delete-exam {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: lightcoral;
+  color: white;
+  font-size: 30px;
+  font-weight: 500;
+  width: 80%;
+  padding: 10px 0;
+  cursor: pointer;
+}
+
+.access-exam {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: lightskyblue;
+  color: white;
+  font-size: 30px;
+  font-weight: 500;
+  width: 80%;
+  padding: 10px 0;
+  cursor: pointer;
+}
+
+.empty-list {
+  font-size: 30px;
+  font-weight: 500;
+  text-align: center;
+} /* From Uiverse.io by StealthWorm */
+/* From Uiverse.io by vinodjangid07 */
+.loader {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.loaderMiniContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  width: 200px;
+  height: fit-content;
+}
+.barContainer {
+  width: 100%;
+  height: fit-content;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 10px;
+  background-position: left;
+}
+.bar {
+  width: 100%;
+  height: 8px;
+  background: linear-gradient(
+    to right,
+    rgb(161, 94, 255),
+    rgb(217, 190, 255),
+    rgb(161, 94, 255)
+  );
+  background-size: 200% 100%;
+  border-radius: 10px;
+  animation: bar ease-in-out 3s infinite alternate-reverse;
+}
+@keyframes bar {
+  0% {
+    background-position: left;
+  }
+  100% {
+    background-position: right;
+  }
+}
+.bar2 {
+  width: 75%;
+}
+.svgIcon {
+  position: absolute;
+  left: -25px;
+  margin-top: 18px;
+  z-index: 2;
+  width: 70%;
+  animation: search ease-in-out 1s infinite alternate-reverse;
+}
+@keyframes search {
+  0% {
+    transform: translateX(0%) rotate(70deg);
+  }
+
+  100% {
+    transform: translateX(100px) rotate(10deg);
+  }
+}
+.svgIcon circle,
+line {
+  stroke: rgb(162, 55, 255);
+}
+.svgIcon circle {
+  fill: rgba(98, 65, 142, 0.238);
+}
+
+/* From Uiverse.io by youngjid */
+.glitch {
+  position: relative;
+  font-size: 40px;
+  font-weight: bold;
+  color: #ffffff;
+  letter-spacing: 3px;
+  z-index: 1;
+}
+
+.glitch:before,
+.glitch:after {
+  display: block;
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0.8;
+}
+
+.glitch:before {
+  animation: glitch-it 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) both infinite;
+  color: #00ffff;
+  z-index: -1;
+}
+
+.glitch:after {
+  animation: glitch-it 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) reverse both
+    infinite;
+  color: #ff00ff;
+  z-index: -2;
+}
+
+@keyframes glitch-it {
+  0% {
+    transform: translate(0);
+  }
+  20% {
+    transform: translate(-2px, 2px);
+  }
+  40% {
+    transform: translate(-2px, -2px);
+  }
+  60% {
+    transform: translate(2px, 2px);
+  }
+  80% {
+    transform: translate(2px, -2px);
+  }
+  to {
+    transform: translate(0);
+  }
+}
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1; /* Light gray background */
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #388e3c; /* Dark green thumb */
+  border-radius: 10px;
+  border: 2px solid #f1f1f1; /* Adds padding around the thumb */
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #2e7d32; /* Slightly darker green on hover */
+}
