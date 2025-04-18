@@ -162,10 +162,10 @@ html, body {
         .body-menu a::before {
             content: attr(data-placeholder);
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+            top: 5%;
+            left: 5%;
+            width: 90%;
+            height: 90%;
             background: rgba(255, 255, 255, 0.665);
             color: #333;
             font-size: 16px;
@@ -176,6 +176,7 @@ html, body {
             opacity: 0;
             transform: scale(0.8);
             transition: opacity 0.1s, transform 0.2s;
+            pointer-events: none; /* Prevent interaction with the pseudo-element */
         }
 
         .body-menu a:hover::before {
@@ -287,24 +288,54 @@ html, body {
             </a>
         </nav>
     </header>
-    <div class="container">
-        <h1>Chào mừng bạn đến với</h1>
-        <h2 style="color: #4CAF50; font-weight: bold;">Math Speed</h2>
+    <div class="container" style="display: flex; justify-content: space-between; align-items: center; padding: 0 5%; margin-top: 40px;">
+        <div style="flex: 1; text-align: left;">
+            <h1 style="font-size: 36px; margin-bottom: 10px; color: #333;">Chào mừng bạn đến với</h1>
+            <h2 style="font-size: 48px; color: #4CAF50; font-weight: bold; margin-top: 0;">Math Speed</h2>
+        </div>
+        <div class="body-menu" style="flex: 1; display: flex; flex-direction: column; align-items: flex-end; gap: 20px;">
+            <a href="../learn/" class="nav-link" data-placeholder="Cùng ôn luyện Toán ngay hôm nay!"
+                style="background: linear-gradient(90deg, #2196F3, #1976D2); box-shadow: 0 8px 15px rgba(33, 150, 243, 0.3); padding: 15px 20px; font-size: 18px; border-radius: 8px; position: relative; overflow: hidden;">
+                <span style="margin-right: 10px;">📘</span>Ôn luyện
+            </a>
+            <a href="../exercise/" class="nav-link" data-placeholder="Kiểm tra trình độ hiện tại của bạn"
+                style="background: linear-gradient(90deg, #FF5722, #E64A19); box-shadow: 0 8px 15px rgba(255, 87, 34, 0.3); padding: 15px 20px; font-size: 18px; border-radius: 8px; position: relative; overflow: hidden;">
+                <span style="margin-right: 10px;">📝</span>Thi thử
+            </a>
+            <a href="../download/" class="nav-link" data-placeholder="Tải về ứng dụng trên điện thoại."
+                style="background: linear-gradient(90deg, #FFC107, #FFA000); box-shadow: 0 8px 15px rgba(255, 193, 7, 0.3); padding: 15px 20px; font-size: 18px; border-radius: 8px; position: relative; overflow: hidden;">
+                <span style="margin-right: 10px;">📥</span>Tải về
+            </a>
+        </div>
     </div>
-    <div class="body-menu">
-        <a href="../learn/" class="nav-link" data-placeholder="Cùng ôn luyện Toán ngay hôm nay!"
-            style="background: linear-gradient(90deg, #2196F3, #1976D2); box-shadow: 0 8px 15px rgba(33, 150, 243, 0.3);">
-            <span style="margin-right: 10px;">📘</span>Ôn luyện
-        </a>
-        <a href="../exercise/" class="nav-link" data-placeholder="Kiểm tra trình độ hiện tại của bạn"
-            style="background: linear-gradient(90deg, #FF5722, #E64A19); box-shadow: 0 8px 15px rgba(255, 87, 34, 0.3);">
-            <span style="margin-right: 10px;">📝</span>Thi thử
-        </a>
-        <a href="../download/" class="nav-link" data-placeholder="Tải về ứng dụng trên điện thoại."
-            style="background: linear-gradient(90deg, #FFC107, #FFA000); box-shadow: 0 8px 15px rgba(255, 193, 7, 0.3);">
-            <span style="margin-right: 10px;">📥</span>Tải về
-        </a>
-    </div>
+    <style>
+        .body-menu a::before {
+            content: attr(data-placeholder);
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.8);
+            color: #333;
+            font-size: 16px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transform: scale(0.95); /* Slightly smaller scale to avoid flickering */
+            transition: opacity 0.2s ease, transform 0.2s ease;
+            pointer-events: none;
+            border-radius: inherit; /* Match the button's border radius */
+            z-index: 1; /* Ensure it stays above the button background */
+        }
+
+        .body-menu a:hover::before {
+            opacity: 1;
+            transform: scale(1);
+        }
+    </style>
 
     <div id="transition-overlay" style="
         position: fixed;

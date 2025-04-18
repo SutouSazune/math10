@@ -87,7 +87,7 @@
     ></div>
     <nav style="
       display: flex;
-      justify-content: space-around;
+      justify-content: space-between;
       align-items: center;
       background-color: #2c3e50;
       padding: 10px 20px;
@@ -95,76 +95,61 @@
       position: sticky;
       top: 0;
       z-index: 1000;
+      font-size: 1.1rem;
     ">
-      <div class="math-link" style="
-        display: flex;
-        align-items: center;
-        cursor: pointer;
+      <a href="../" class="nav-logo" style="
+      margin-right: auto;
+      padding: 8px 16px;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: linear-gradient(90deg, #34495e, #2c3e50);
+      border-radius: 8px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+      color: #fff;
+      font-weight: bold;
       ">
-      <img src="assets/images/math-logo.svg" class="favicon" style="
-        width: 40px;
-        height: 40px;
-        margin-right: 10px;
-      " />
-      <span class="logo-title" style="
-        color: #0083a4;
-        font-size: 1.2rem;
-        font-weight: bold;
-      ">MathSpeed</span>
-      </div>
-      <div class="learn-link" style="
-        display: flex;
-        align-items: center;
-        cursor: pointer;
-        color: #ecf0f1;
-        transition: color 0.3s;
-      " onclick="
-        document.location.href = './'
-      " onmouseover="this.style.color='#1abc9c'" onmouseout="this.style.color='#ecf0f1'">
-      <img src="assets/images/book-logo.svg" class="learn-logo" style="
-        width: 30px;
-        height: 30px;
-        margin-right: 10px;
-      " />
-      <span class="logo-title" style="
-        font-size: 1rem;
-      ">Học</span>
-      </div>
-      <div class="exercise-link" style="
-        display: flex;
-        align-items: center;
-        cursor: pointer;
-        color: #ecf0f1;
-        transition: color 0.3s;
-      " onclick="
-        document.location.href = '../exercise'
-      " onmouseover="this.style.color='#1abc9c'" onmouseout="this.style.color='#ecf0f1'">
-      <img src="assets/images/exercise-logo.svg" class="exercise-logo" style="
-        width: 30px;
-        height: 30px;
-        margin-right: 10px;
-      " />
-      <span class="logo-title" style="
-        font-size: 1rem;
-      ">Làm đề thi</span>
-      </div>
-      <div class="download-link" style="
-        display: flex;
-        align-items: center;
-        cursor: pointer;
-        color: #ecf0f1;
-        transition: color 0.3s;
-      " onclick="
-        document.location.href = '../download'
-      " onmouseover="this.style.color='#1abc9c'" onmouseout="this.style.color='#ecf0f1'">
-      <img src="assets/images/download-logo.svg" class="download-logo" style="
-        width: 30px;
-        height: 30px;
-        margin-right: 10px;
-      " />
-      <span class="logo-title" style="
-        font-size: 1rem;
-      ">Tải app điện thoại</span>
+      <img src="../learn/assets/images/math-logo.svg" alt="MathSpeed Logo" style="height: 40px;">
+      <span style="font-size: 1.2rem;">MathSpeed</span>
+      </a>
+      <div style="display: flex; gap: 15px;">
+      <a href="../learn/" class="nav-link" style="
+      padding: 8px 16px;
+      background: linear-gradient(90deg, #FFC107, #FFA000);
+      border-radius: 8px;
+      box-shadow: 0 4px 6px rgba(255, 193, 7, 0.3);
+      font-weight: bold;
+      transition: transform 0.3s, box-shadow 0.3s;
+      text-decoration: none;
+      color: #fff;
+      ">
+      Ôn luyện
+      </a>
+      <a href="../exercise/" class="nav-link" style="
+      padding: 8px 16px;
+      background: linear-gradient(90deg, #FF5722, #E64A19);
+      border-radius: 8px;
+      box-shadow: 0 4px 6px rgba(255, 87, 34, 0.3);
+      font-weight: bold;
+      transition: transform 0.3s, box-shadow 0.3s;
+      text-decoration: none;
+      color: #fff;
+      ">
+      Thi thử
+      </a>
+      <a href="../download/" class="nav-link" style="
+      padding: 8px 16px;
+      background: linear-gradient(90deg, #2196F3, #1976D2);
+      border-radius: 8px;
+      box-shadow: 0 4px 6px rgba(33, 150, 243, 0.3);
+      font-weight: bold;
+      transition: transform 0.3s, box-shadow 0.3s;
+      text-decoration: none;
+      color: #fff;
+      ">
+      Tải về
+      </a>
       </div>
     </nav>
     <div class="mid-section"></div>
