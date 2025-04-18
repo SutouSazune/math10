@@ -257,6 +257,40 @@ html, body {
                 left: 200%;
             }
         }
+        .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+}
+
+.left {
+    flex: 1;
+}
+
+.right {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    align-items: flex-start;
+}
+
+.nav-link {
+    display: inline-block;
+    padding: 10px 20px;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    transition: transform 0.2s;
+}
+
+.nav-link:hover {
+    transform: scale(1.05);
+}
     </style>
 </head>
 
@@ -288,22 +322,24 @@ html, body {
         </nav>
     </header>
     <div class="container">
-        <h1>Chào mừng bạn đến với</h1>
-        <h2 style="color: #4CAF50; font-weight: bold;">Math Speed</h2>
-    </div>
-    <div class="body-menu">
-        <a href="../learn/" class="nav-link" data-placeholder="Cùng ôn luyện Toán ngay hôm nay!"
-            style="background: linear-gradient(90deg, #2196F3, #1976D2); box-shadow: 0 8px 15px rgba(33, 150, 243, 0.3);">
-            <span style="margin-right: 10px;">📘</span>Ôn luyện
-        </a>
-        <a href="../exercise/" class="nav-link" data-placeholder="Kiểm tra trình độ hiện tại của bạn"
-            style="background: linear-gradient(90deg, #FF5722, #E64A19); box-shadow: 0 8px 15px rgba(255, 87, 34, 0.3);">
-            <span style="margin-right: 10px;">📝</span>Thi thử
-        </a>
-        <a href="../download/" class="nav-link" data-placeholder="Tải về ứng dụng trên điện thoại."
-            style="background: linear-gradient(90deg, #FFC107, #FFA000); box-shadow: 0 8px 15px rgba(255, 193, 7, 0.3);">
-            <span style="margin-right: 10px;">📥</span>Tải về
-        </a>
+        <div class="left">
+            <h1>Chào mừng bạn đến với</h1>
+            <h2 style="color: #4CAF50; font-weight: bold;">Math Speed</h2>
+        </div>
+        <div class="right body-menu">
+            <a href="../learn/" class="nav-link" data-placeholder="Cùng ôn luyện Toán ngay hôm nay!"
+                style="background: linear-gradient(90deg, #2196F3, #1976D2); box-shadow: 0 8px 15px rgba(33, 150, 243, 0.3);">
+                <span style="margin-right: 10px;">📘</span>Ôn luyện
+            </a>
+            <a href="../exercise/" class="nav-link" data-placeholder="Kiểm tra trình độ hiện tại của bạn"
+                style="background: linear-gradient(90deg, #FF5722, #E64A19); box-shadow: 0 8px 15px rgba(255, 87, 34, 0.3);">
+                <span style="margin-right: 10px;">📝</span>Thi thử
+            </a>
+            <a href="../download/" class="nav-link" data-placeholder="Tải về ứng dụng trên điện thoại."
+                style="background: linear-gradient(90deg, #FFC107, #FFA000); box-shadow: 0 8px 15px rgba(255, 193, 7, 0.3);">
+                <span style="margin-right: 10px;">📥</span>Tải về
+            </a>
+        </div>
     </div>
 
     <div id="transition-overlay" style="
