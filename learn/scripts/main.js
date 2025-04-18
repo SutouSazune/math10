@@ -1496,7 +1496,7 @@ function unlockAllUnits() {
   ];
   console.log("Unlocked all the level!");
   localStorage.setItem("units", JSON.stringify(units));
-  window.location.href = "/learn/";
+  window.location.href = "learn";
 }
 
 function saveScrollPosition() {
