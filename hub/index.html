@@ -262,27 +262,51 @@ html, body {
 
 <body>
     <header>
-        <div class="container" style="display: flex; justify-content: space-between; align-items: center;">
-            <div style="text-align: left; flex: 1;">
-                <h1 style="margin: 0; font-size: 24px;">Chào mừng bạn đến với</h1>
-                <h2 style="margin: 0; color: #4CAF50; font-weight: bold; font-size: 32px;">Math Speed</h2>
-            </div>
-            <div style="display: flex; flex-direction: column; gap: 15px; flex: 1; align-items: center;">
-                <a href="../learn/" class="nav-link" data-placeholder="Cùng ôn luyện Toán ngay hôm nay!"
-                   style="display: inline-block; padding: 10px 20px; text-decoration: none; color: white; font-size: 16px; font-weight: bold; border-radius: 5px; text-align: center; background: linear-gradient(90deg, #2196F3, #1976D2); box-shadow: 0 8px 15px rgba(33, 150, 243, 0.3); transition: transform 0.2s; width: 100%; max-width: 200px;">
-                    <span style="margin-right: 10px;">📘</span>Ôn luyện
-                </a>
-                <a href="../exercise/" class="nav-link" data-placeholder="Kiểm tra trình độ hiện tại của bạn"
-                   style="display: inline-block; padding: 10px 20px; text-decoration: none; color: white; font-size: 16px; font-weight: bold; border-radius: 5px; text-align: center; background: linear-gradient(90deg, #FF5722, #E64A19); box-shadow: 0 8px 15px rgba(255, 87, 34, 0.3); transition: transform 0.2s; width: 100%; max-width: 200px;">
-                    <span style="margin-right: 10px;">📝</span>Thi thử
-                </a>
-                <a href="../download/" class="nav-link" data-placeholder="Tải về ứng dụng trên điện thoại."
-                   style="display: inline-block; padding: 10px 20px; text-decoration: none; color: white; font-size: 16px; font-weight: bold; border-radius: 5px; text-align: center; background: linear-gradient(90deg, #FFC107, #FFA000); box-shadow: 0 8px 15px rgba(255, 193, 7, 0.3); transition: transform 0.2s; width: 100%; max-width: 200px;">
-                    <span style="margin-right: 10px;">📥</span>Tải về
-                </a>
+        <div id="mathspeed_info"
+            style="display: flex; align-items: center; gap: 15px; position: relative; overflow: hidden; border-radius: 10px;">
+            <a href="../mathspeed_info">
+                <img src="../learn/assets/images/math-logo.svg" alt="Math Speed Logo" style="height: 50px;">
+            </a>
+            <h1 style="margin: 0; font-size: 35px; position: relative; z-index: 1;">Math Speed</h1>
+            <div
+                style="position: absolute; top: 0; left: -150%; width: 150%; height: 100%; background: linear-gradient(90deg, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0.8)); transform: skewX(-30deg); animation: shiny 3s cubic-bezier(0.25, 1, 0.5, 1) infinite; border-radius: 10px;">
             </div>
         </div>
+        <nav>
+            <a href="../learn/" class="nav-link"
+                style="padding: 10px 20px; background: linear-gradient(90deg, #FFC107, #FFA000); border-radius: 8px; box-shadow: 0 4px 6px rgba(255, 193, 7, 0.3); font-weight: bold; transition: transform 0.3s, box-shadow 0.3s;">
+                Ôn luyện
+            </a>
+            <a href="../exercise/" class="nav-link"
+                style="padding: 10px 20px; background: linear-gradient(90deg, #FF5722, #E64A19); border-radius: 8px; box-shadow: 0 4px 6px rgba(255, 87, 34, 0.3); font-weight: bold; transition: transform 0.3s, box-shadow 0.3s;">
+                Thi thử
+            </a>
+            <a href="../download/" class="nav-link"
+                style="padding: 10px 20px; background: linear-gradient(90deg, #2196F3, #1976D2); border-radius: 8px; box-shadow: 0 4px 6px rgba(33, 150, 243, 0.3); font-weight: bold; transition: transform 0.3s, box-shadow 0.3s;">
+                Tải về
+            </a>
+        </nav>
     </header>
+    <div class="container" style="display: flex; justify-content: space-between; align-items: center;">
+        <div style="text-align: left; flex: 1;">
+            <h1 style="margin: 0; font-size: 24px;">Chào mừng bạn đến với</h1>
+            <h2 style="margin: 0; color: #4CAF50; font-weight: bold; font-size: 32px;">Math Speed</h2>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 15px; flex: 1; align-items: center;">
+            <a href="../learn/" class="nav-link" data-placeholder="Cùng ôn luyện Toán ngay hôm nay!"
+               style="display: inline-block; padding: 10px 20px; text-decoration: none; color: white; font-size: 16px; font-weight: bold; border-radius: 5px; text-align: center; background: linear-gradient(90deg, #2196F3, #1976D2); box-shadow: 0 8px 15px rgba(33, 150, 243, 0.3); transition: transform 0.2s; width: 100%; max-width: 200px;">
+                <span style="margin-right: 10px;">📘</span>Ôn luyện
+            </a>
+            <a href="../exercise/" class="nav-link" data-placeholder="Kiểm tra trình độ hiện tại của bạn"
+               style="display: inline-block; padding: 10px 20px; text-decoration: none; color: white; font-size: 16px; font-weight: bold; border-radius: 5px; text-align: center; background: linear-gradient(90deg, #FF5722, #E64A19); box-shadow: 0 8px 15px rgba(255, 87, 34, 0.3); transition: transform 0.2s; width: 100%; max-width: 200px;">
+                <span style="margin-right: 10px;">📝</span>Thi thử
+            </a>
+            <a href="../download/" class="nav-link" data-placeholder="Tải về ứng dụng trên điện thoại."
+               style="display: inline-block; padding: 10px 20px; text-decoration: none; color: white; font-size: 16px; font-weight: bold; border-radius: 5px; text-align: center; background: linear-gradient(90deg, #FFC107, #FFA000); box-shadow: 0 8px 15px rgba(255, 193, 7, 0.3); transition: transform 0.2s; width: 100%; max-width: 200px;">
+                <span style="margin-right: 10px;">📥</span>Tải về
+            </a>
+        </div>
+    </div>
 
     <div id="transition-overlay" style="
         position: fixed;
