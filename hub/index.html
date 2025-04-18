@@ -1,359 +1,357 @@
 <!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Math Speed</title>
-    <link rel="icon" href="../learn/assets/images/math-logo.svg" type="image/svg+xml">
-    <style>
-        body {
-            margin: 0;
-            font-family: 'Poppins', Arial, sans-serif;
-            background: linear-gradient(135deg, #f4f4f9, #e0f7fa);
-            color: #333;
-            overflow-x: hidden;
-        }
-html, body {
-  height: 100%;
-  overflow-x: hidden; /* Prevent horizontal scrolling */
-}
-
-@media (max-width: 768px) {
-  .screen {
-    margin-top: 20px;
-    padding: 0 10px;
-  }
-
-  .top-section {
-    height: auto;
-    padding: 10px;
-    text-align: center;
-  }
-
-  .learn-link {
-    left: 10px;
-    top: 10px;
-    width: 60px;
-    height: 60px;
-  }
-
-  .rules-container, .history-exam {
-    width: 100%;
-    padding: 20px;
-  }
-
-  .exam-container {
-    grid-template-columns: 1fr;
-    row-gap: 20px;
-  }
-
-  .exam-name, .delete-exam, .access-exam {
-    font-size: 20px;
-    text-align: center;
-  }
-
-  .cta-button {
-    font-size: 1.2rem;
-    padding: 10px;
-  }
-}
-        header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 15px 30px;
-            background: linear-gradient(90deg, #4CAF50, #388E3C);
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            color: white;
-        }
-
-        header img {
-            height: 60px;
-            animation: fadeIn 1s ease-in-out;
-        }
-
-        nav {
-            display: flex;
-            gap: 25px;
-        }
-
-        nav a {
-            text-decoration: none;
-            color: white;
-            font-size: 18px;
-            font-weight: bold;
-            position: relative;
-            transition: color 0.3s, transform 0.3s;
-        }
-
-        nav a:hover {
-            color: #ffeb3b;
-            transform: scale(1.1);
-        }
-
-        nav a::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 2px;
-            background: #ffeb3b;
-            bottom: -5px;
-            left: 0;
-            transition: width 0.3s;
-        }
-
-        nav a:hover::after {
-            width: 100%;
-        }
-
-        .container {
-            text-align: center;
-            margin-top: 60px;
-            animation: slideIn 1s ease-out;
-        }
-
-        .container h1 {
-            font-size: 40px;
-            color: #333;
-            margin-bottom: 10px;
-            text-align: left;
-            margin-top: -5%;
-            margin-left: 2%;
-        }
-        .container h2 {
-            font-size: 50px;
-            color: #333;
-            text-align: left;
-            margin-top: -1%;
-            margin-left: 2%;
-        }
-
-        .body-menu {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 20px;
-            margin: 40px 0;
-        }
-
-        .body-menu a {
-            text-decoration: none;
-            display: block;
-            width: 250px;
-            padding: 20px;
-            background: linear-gradient(90deg, #4CAF50, #388E3C);
-            color: white;
-            font-size: 18px;
-            font-weight: bold;
-            text-align: center;
-            border-radius: 12px;
-            box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
-            position: relative;
-            overflow: hidden;
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-
-        .body-menu a:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 12px rgba(0, 0, 0, 0.144);
-        }
-
-        .body-menu a::before {
-            content: attr(data-placeholder);
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(255, 255, 255, 0.665);
-            color: #333;
-            font-size: 16px;
-            font-weight: bold;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            opacity: 0;
-            transform: scale(0.8);
-            transition: opacity 0.1s, transform 0.2s;
-        }
-
-        .body-menu a:hover::before {
-            opacity: 1;
-            transform: scale(1);
-        }
-
-        .project-info {
-            text-align: center;
-            margin: 30px;
-            animation: fadeIn 1.5s ease-in-out;
-        }
-
-        .project-info img {
-            max-width: 80%;
-            height: auto;
-            border-radius: 15px;
-            box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
-            transition: transform 0.3s;
-        }
-
-        .project-info img:hover {
-            transform: scale(1.05);
-        }
-
-        .project-info p {
-            font-size: 20px;
-            color: #555;
-            margin-top: 15px;
-            line-height: 1.6;
-        }
-        ::-webkit-scrollbar {
-            width: 10px;
-            height: 10px;
-        }
-
-        ::-webkit-scrollbar-track {
-            background: #f1f1f1; /* Light gray background */
-            border-radius: 10px;
-        }
-
-        ::-webkit-scrollbar-thumb {
-            background: #388e3c; /* Dark green thumb */
-            border-radius: 10px;
-            border: 2px solid #f1f1f1; /* Adds padding around the thumb */
-        }
-
-        ::-webkit-scrollbar-thumb:hover {
-            background: #2e7d32; /* Slightly darker green on hover */
-        }
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-            }
-
-            to {
-                opacity: 1;
-            }
-        }
-
-        @keyframes slideIn {
-            from {
-                transform: translateY(-50px);
-                opacity: 0;
-            }
-
-            to {
-                transform: translateY(0);
-                opacity: 1;
-            }
-        }
-
-        @keyframes shiny {
-            0% {
-                left: -300%;
-            }
-
-            100% {
-                left: 200%;
-            }
-        }
-    </style>
-</head>
-
-<body>
-    <header>
-        <div id="mathspeed_info"
-            style="display: flex; align-items: center; gap: 15px; position: relative; overflow: hidden; border-radius: 10px;">
-            <a href="../mathspeed_info">
-                <img src="../learn/assets/images/math-logo.svg" alt="Math Speed Logo" style="height: 50px;">
-            </a>
-            <h1 style="margin: 0; font-size: 35px; position: relative; z-index: 1;">Math Speed</h1>
-            <div
-                style="position: absolute; top: 0; left: -150%; width: 150%; height: 100%; background: linear-gradient(90deg, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0.8)); transform: skewX(-30deg); animation: shiny 3s cubic-bezier(0.25, 1, 0.5, 1) infinite; border-radius: 10px;">
-            </div>
-        </div>
-        <nav>
-            <a href="../learn/" class="nav-link"
-                style="padding: 10px 20px; background: linear-gradient(90deg, #FFC107, #FFA000); border-radius: 8px; box-shadow: 0 4px 6px rgba(255, 193, 7, 0.3); font-weight: bold; transition: transform 0.3s, box-shadow 0.3s;">
-                Ôn luyện
-            </a>
-            <a href="../exercise/" class="nav-link"
-                style="padding: 10px 20px; background: linear-gradient(90deg, #FF5722, #E64A19); border-radius: 8px; box-shadow: 0 4px 6px rgba(255, 87, 34, 0.3); font-weight: bold; transition: transform 0.3s, box-shadow 0.3s;">
-                Thi thử
-            </a>
-            <a href="../download/" class="nav-link"
-                style="padding: 10px 20px; background: linear-gradient(90deg, #2196F3, #1976D2); border-radius: 8px; box-shadow: 0 4px 6px rgba(33, 150, 243, 0.3); font-weight: bold; transition: transform 0.3s, box-shadow 0.3s;">
-                Tải về
-            </a>
-        </nav>
-    </header>
-    <div class="container" style="display: flex; justify-content: space-between; align-items: left;">
-        <div style="text-align: left; flex: 1;">
-            <h1 style="margin: 0; font-size: 24px;">Chào mừng bạn đến với</h1>
-            <h2 style="margin: 0; color: #4CAF50; font-weight: bold; font-size: 32px;">Math Speed</h2>
-        </div>
-        <div style="display: flex; flex-direction: column; gap: 15px; flex: 1; align-items: right;">
-            <a href="../learn/" class="nav-link" data-placeholder="Cùng ôn luyện Toán ngay hôm nay!"
-               style="display: inline-block; padding: 10px 20px; text-decoration: none; color: white; font-size: 16px; font-weight: bold; border-radius: 5px; text-align: center; background: linear-gradient(90deg, #2196F3, #1976D2); box-shadow: 0 8px 15px rgba(33, 150, 243, 0.3); transition: transform 0.2s; width: 100%; max-width: 200px;">
-                <span style="margin-right: 10px;">📘</span>Ôn luyện
-            </a>
-            <a href="../exercise/" class="nav-link" data-placeholder="Kiểm tra trình độ hiện tại của bạn"
-               style="display: inline-block; padding: 10px 20px; text-decoration: none; color: white; font-size: 16px; font-weight: bold; border-radius: 5px; text-align: center; background: linear-gradient(90deg, #FF5722, #E64A19); box-shadow: 0 8px 15px rgba(255, 87, 34, 0.3); transition: transform 0.2s; width: 100%; max-width: 200px;">
-                <span style="margin-right: 10px;">📝</span>Thi thử
-            </a>
-            <a href="../download/" class="nav-link" data-placeholder="Tải về ứng dụng trên điện thoại."
-               style="display: inline-block; padding: 10px 20px; text-decoration: none; color: white; font-size: 16px; font-weight: bold; border-radius: 5px; text-align: center; background: linear-gradient(90deg, #FFC107, #FFA000); box-shadow: 0 8px 15px rgba(255, 193, 7, 0.3); transition: transform 0.2s; width: 100%; max-width: 200px;">
-                <span style="margin-right: 10px;">📥</span>Tải về
-            </a>
-        </div>
-    </div>
-
-    <div id="transition-overlay" style="
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: black;
-        opacity: 0;
-        z-index: 9999;
-        pointer-events: none;
-        transition: opacity 1s ease-in-out;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-    ">
-        <div style="position: relative; display: inline-block; text-align: center;">
-            <h1 style="color: white; font-size: 24px; text-align: center; text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);">Math Speed</h1>
-        </div>
-</body>
-</div>
-
-    <script>
-        document.querySelectorAll('.nav-link').forEach(link => {
-            link.addEventListener('click', function (event) {
-                event.preventDefault();
-                const overlay = document.getElementById('transition-overlay');
-                overlay.style.pointerEvents = 'auto';
-                overlay.style.opacity = '1';
-                setTimeout(() => {
-                    window.location.href = this.href;
-                }, 1000); // Wait for the transition effect before navigating
-            });
-        });
-    </script>
-    </div>
-    <div class="project-info">
-        <img src="learn/assets/images/project-image.jpg" alt="Project Image">
-        <p>Math Speed is a platform designed to enhance your mathematical skills through interactive exercises, learning
-            materials, and downloadable resources.</p>
-    </div>
-    <div class="project-info">
-        <img src="learn/assets/images/project-image.jpg" alt="Project Image">
-        <p>Math Speed is a platform designed to enhance your mathematical skills through interactive exercises, learning
-            materials, and downloadable resources.</p>
-    </div>
-</body>
-
-</html>
+ <html lang="en">
+ 
+ <head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Math Speed</title>
+     <link rel="icon" href="../learn/assets/images/math-logo.svg" type="image/svg+xml">
+     <style>
+         body {
+             margin: 0;
+             font-family: 'Poppins', Arial, sans-serif;
+             background: linear-gradient(135deg, #f4f4f9, #e0f7fa);
+             color: #333;
+             overflow-x: hidden;
+         }
+ html, body {
+   height: 100%;
+   overflow-x: hidden; /* Prevent horizontal scrolling */
+ }
+ 
+ @media (max-width: 768px) {
+   .screen {
+     margin-top: 20px;
+     padding: 0 10px;
+   }
+ 
+   .top-section {
+     height: auto;
+     padding: 10px;
+     text-align: center;
+   }
+ 
+   .learn-link {
+     left: 10px;
+     top: 10px;
+     width: 60px;
+     height: 60px;
+   }
+ 
+   .rules-container, .history-exam {
+     width: 100%;
+     padding: 20px;
+   }
+ 
+   .exam-container {
+     grid-template-columns: 1fr;
+     row-gap: 20px;
+   }
+ 
+   .exam-name, .delete-exam, .access-exam {
+     font-size: 20px;
+     text-align: center;
+   }
+ 
+   .cta-button {
+     font-size: 1.2rem;
+     padding: 10px;
+   }
+ }
+         header {
+             display: flex;
+             align-items: center;
+             justify-content: space-between;
+             padding: 15px 30px;
+             background: linear-gradient(90deg, #4CAF50, #388E3C);
+             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+             color: white;
+         }
+ 
+         header img {
+             height: 60px;
+             animation: fadeIn 1s ease-in-out;
+         }
+ 
+         nav {
+             display: flex;
+             gap: 25px;
+         }
+ 
+         nav a {
+             text-decoration: none;
+             color: white;
+             font-size: 18px;
+             font-weight: bold;
+             position: relative;
+             transition: color 0.3s, transform 0.3s;
+         }
+ 
+         nav a:hover {
+             color: #ffeb3b;
+             transform: scale(1.1);
+         }
+ 
+         nav a::after {
+             content: '';
+             position: absolute;
+             width: 0;
+             height: 2px;
+             background: #ffeb3b;
+             bottom: -5px;
+             left: 0;
+             transition: width 0.3s;
+         }
+ 
+         nav a:hover::after {
+             width: 100%;
+         }
+ 
+         .container {
+             text-align: center;
+             margin-top: 60px;
+             animation: slideIn 1s ease-out;
+         }
+ 
+         .container h1 {
+             font-size: 40px;
+             color: #333;
+             margin-bottom: 10px;
+             text-align: left;
+             margin-top: -5%;
+             margin-left: 2%;
+         }
+         .container h2 {
+             font-size: 50px;
+             color: #333;
+             text-align: left;
+             margin-top: -1%;
+             margin-left: 2%;
+         }
+ 
+         .body-menu {
+             display: flex;
+             flex-direction: column;
+             align-items: center;
+             gap: 20px;
+             margin: 40px 0;
+         }
+ 
+         .body-menu a {
+             text-decoration: none;
+             display: block;
+             width: 250px;
+             padding: 20px;
+             background: linear-gradient(90deg, #4CAF50, #388E3C);
+             color: white;
+             font-size: 18px;
+             font-weight: bold;
+             text-align: center;
+             border-radius: 12px;
+             box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+             position: relative;
+             overflow: hidden;
+             transition: transform 0.3s, box-shadow 0.3s;
+         }
+ 
+         .body-menu a:hover {
+             transform: translateY(-5px);
+             box-shadow: 0 8px 12px rgba(0, 0, 0, 0.144);
+         }
+ 
+         .body-menu a::before {
+             content: attr(data-placeholder);
+             position: absolute;
+             top: 0;
+             left: 0;
+             width: 100%;
+             height: 100%;
+             background: rgba(255, 255, 255, 0.665);
+             color: #333;
+             font-size: 16px;
+             font-weight: bold;
+             display: flex;
+             align-items: center;
+             justify-content: center;
+             opacity: 0;
+             transform: scale(0.8);
+             transition: opacity 0.1s, transform 0.2s;
+         }
+ 
+         .body-menu a:hover::before {
+             opacity: 1;
+             transform: scale(1);
+         }
+ 
+         .project-info {
+             text-align: center;
+             margin: 30px;
+             animation: fadeIn 1.5s ease-in-out;
+         }
+ 
+         .project-info img {
+             max-width: 80%;
+             height: auto;
+             border-radius: 15px;
+             box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+             transition: transform 0.3s;
+         }
+ 
+         .project-info img:hover {
+             transform: scale(1.05);
+         }
+ 
+         .project-info p {
+             font-size: 20px;
+             color: #555;
+             margin-top: 15px;
+             line-height: 1.6;
+         }
+         ::-webkit-scrollbar {
+             width: 10px;
+             height: 10px;
+         }
+ 
+         ::-webkit-scrollbar-track {
+             background: #f1f1f1; /* Light gray background */
+             border-radius: 10px;
+         }
+ 
+         ::-webkit-scrollbar-thumb {
+             background: #388e3c; /* Dark green thumb */
+             border-radius: 10px;
+             border: 2px solid #f1f1f1; /* Adds padding around the thumb */
+         }
+ 
+         ::-webkit-scrollbar-thumb:hover {
+             background: #2e7d32; /* Slightly darker green on hover */
+         }
+         @keyframes fadeIn {
+             from {
+                 opacity: 0;
+             }
+ 
+             to {
+                 opacity: 1;
+             }
+         }
+ 
+         @keyframes slideIn {
+             from {
+                 transform: translateY(-50px);
+                 opacity: 0;
+             }
+ 
+             to {
+                 transform: translateY(0);
+                 opacity: 1;
+             }
+         }
+ 
+         @keyframes shiny {
+             0% {
+                 left: -300%;
+             }
+ 
+             100% {
+                 left: 200%;
+             }
+         }
+     </style>
+ </head>
+ 
+ <body>
+     <header>
+         <div id="mathspeed_info"
+             style="display: flex; align-items: center; gap: 15px; position: relative; overflow: hidden; border-radius: 10px;">
+             <a href="../mathspeed_info">
+                 <img src="../learn/assets/images/math-logo.svg" alt="Math Speed Logo" style="height: 50px;">
+             </a>
+             <h1 style="margin: 0; font-size: 35px; position: relative; z-index: 1;">Math Speed</h1>
+             <div
+                 style="position: absolute; top: 0; left: -150%; width: 150%; height: 100%; background: linear-gradient(90deg, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0.8)); transform: skewX(-30deg); animation: shiny 3s cubic-bezier(0.25, 1, 0.5, 1) infinite; border-radius: 10px;">
+             </div>
+         </div>
+         <nav>
+             <a href="../learn/" class="nav-link"
+                 style="padding: 10px 20px; background: linear-gradient(90deg, #FFC107, #FFA000); border-radius: 8px; box-shadow: 0 4px 6px rgba(255, 193, 7, 0.3); font-weight: bold; transition: transform 0.3s, box-shadow 0.3s;">
+                 Ôn luyện
+             </a>
+             <a href="../exercise/" class="nav-link"
+                 style="padding: 10px 20px; background: linear-gradient(90deg, #FF5722, #E64A19); border-radius: 8px; box-shadow: 0 4px 6px rgba(255, 87, 34, 0.3); font-weight: bold; transition: transform 0.3s, box-shadow 0.3s;">
+                 Thi thử
+             </a>
+             <a href="../download/" class="nav-link"
+                 style="padding: 10px 20px; background: linear-gradient(90deg, #2196F3, #1976D2); border-radius: 8px; box-shadow: 0 4px 6px rgba(33, 150, 243, 0.3); font-weight: bold; transition: transform 0.3s, box-shadow 0.3s;">
+                 Tải về
+             </a>
+         </nav>
+     </header>
+     <div class="container" style="display: flex; justify-content: space-between; align-items: center; margin: auto; height: 100vh; max-width: 800px; background-color: #f9f9f9; padding: 20px; border-radius: 10px; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);">
+         <div style="text-align: left; flex: 1;">
+             <h1 style="margin: 0; font-size: 24px;">Chào mừng bạn đến với</h1>
+             <h2 style="margin: 0; color: #4CAF50; font-weight: bold; font-size: 32px;">Math Speed</h2>
+         </div>
+         <div style="display: flex; flex-direction: column; gap: 15px; flex: 1; align-items: center;">
+             <a href="../learn/" class="nav-link" data-placeholder="Cùng ôn luyện Toán ngay hôm nay!"
+                style="display: inline-block; padding: 10px 20px; text-decoration: none; color: white; font-size: 16px; font-weight: bold; border-radius: 5px; text-align: center; background: linear-gradient(90deg, #2196F3, #1976D2); box-shadow: 0 8px 15px rgba(33, 150, 243, 0.3); transition: transform 0.2s; width: 100%; max-width: 200px;">
+                 <span style="margin-right: 10px;">📘</span>Ôn luyện
+             </a>
+             <a href="../exercise/" class="nav-link" data-placeholder="Kiểm tra trình độ hiện tại của bạn"
+                style="display: inline-block; padding: 10px 20px; text-decoration: none; color: white; font-size: 16px; font-weight: bold; border-radius: 5px; text-align: center; background: linear-gradient(90deg, #FF5722, #E64A19); box-shadow: 0 8px 15px rgba(255, 87, 34, 0.3); transition: transform 0.2s; width: 100%; max-width: 200px;">
+                 <span style="margin-right: 10px;">📝</span>Thi thử
+             </a>
+             <a href="../download/" class="nav-link" data-placeholder="Tải về ứng dụng trên điện thoại."
+                style="display: inline-block; padding: 10px 20px; text-decoration: none; color: white; font-size: 16px; font-weight: bold; border-radius: 5px; text-align: center; background: linear-gradient(90deg, #FFC107, #FFA000); box-shadow: 0 8px 15px rgba(255, 193, 7, 0.3); transition: transform 0.2s; width: 100%; max-width: 200px;">
+                 <span style="margin-right: 10px;">📥</span>Tải về
+             </a>
+         </div>
+     </div>
+ 
+     <div id="transition-overlay" style="
+         position: fixed;
+         top: 0;
+         left: 0;
+         width: 100%;
+         height: 100%;
+         background: black;
+         opacity: 0;
+         z-index: 9999;
+         pointer-events: none;
+         transition: opacity 1s ease-in-out;
+         display: flex;
+         flex-direction: column;
+         align-items: center;
+         justify-content: center;
+     ">
+         <div style="position: relative; display: inline-block; text-align: center;">
+             <h1 style="color: white; font-size: 24px; text-align: center; text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);">Math Speed</h1>
+         </div>
+ </body>
+ </div>
+ 
+     <script>
+         document.querySelectorAll('.nav-link').forEach(link => {
+             link.addEventListener('click', function (event) {
+                 event.preventDefault();
+                 const overlay = document.getElementById('transition-overlay');
+                 overlay.style.pointerEvents = 'auto';
+                 overlay.style.opacity = '1';
+                 setTimeout(() => {
+                     window.location.href = this.href;
+                 }, 1000); // Wait for the transition effect before navigating
+             });
+         });
+     </script>
+     </div>
+     <div class="project-info">
+         <img src="learn/assets/images/project-image.jpg" alt="Project Image">
+         <p>Math Speed is a platform designed to enhance your mathematical skills through interactive exercises, learning
+             materials, and downloadable resources.</p>
+     </div>
+     <div class="project-info">
+         <img src="learn/assets/images/project-image.jpg" alt="Project Image">
+         <p>Math Speed is a platform designed to enhance your mathematical skills through interactive exercises, learning
+             materials, and downloadable resources.</p>
+     </div>
+ </body>
