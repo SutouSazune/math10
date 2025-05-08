@@ -612,6 +612,7 @@ function resetProgress() {
     {
       id: 1,
       name: "Khái niệm phương trình và hệ hai phương trình bậc nhất hai ẩn",
+      category: "Phương trình và hệ phương trình",
       levels: [
         {
           name: "Phương trình bậc nhất hai ẩn",
@@ -633,6 +634,7 @@ function resetProgress() {
     {
       id: 2,
       name: "Giải hệ hai phương trình bậc nhất hai ẩn",
+      category: "Phương trình và hệ phương trình",
       levels: [
         {
           name: "Phương pháp thế",
@@ -659,6 +661,7 @@ function resetProgress() {
     {
       id: 3,
       name: "Giải bài toán bằng cách lập hệ phương trình",
+      category: "Phương trình và hệ phương trình",
       levels: [
         {
           name: "Luyện tập",
@@ -671,6 +674,7 @@ function resetProgress() {
     {
       id: 4,
       name: "Phương trình quy về phương trình bậc nhất một ẩn",
+      category: "Phương trình và hệ phương trình",
       levels: [
         {
           name: "Phương trình tích",
@@ -692,6 +696,7 @@ function resetProgress() {
     {
       id: 5,
       name: "Bất đẳng thức và tính chất",
+      category: "Bất đẳng thức và bất phương trình",
       levels: [
         { name: "Bất đẳng thức", state: "lock", complete: "false" },
         {
@@ -711,6 +716,7 @@ function resetProgress() {
     {
       id: 6,
       name: "Bất phương trình bậc nhất một ẩn",
+      category: "Bất đẳng thức và bất phương trình",
       levels: [
         {
           name: "Khái niệm bất phương trình bậc nhất một ẩn",
@@ -729,6 +735,7 @@ function resetProgress() {
     {
       id: 7,
       name: "Căn bậc hai và căn thức bậc hai",
+      category: "Căn thức và biến đổi căn thức",
       levels: [
         { name: "Căn bậc hai", state: "lock", complete: "false" },
         { name: "Căn thức bậc hai", state: "lock", complete: "false" },
@@ -738,6 +745,7 @@ function resetProgress() {
     {
       id: 8,
       name: "Khai căn bậc hai với phép nhân và phép chia",
+      category: "Căn thức và biến đổi căn thức",
       levels: [
         {
           name: "Khai căn bậc hai và phép nhân",
@@ -755,6 +763,7 @@ function resetProgress() {
     {
       id: 9,
       name: "Biến đổi đơn giản và rút gọn biểu thức chứa căn thức bậc hai",
+      category: "Căn thức và biến đổi căn thức",
       levels: [
         {
           name: "Đưa thừa số ra ngoài dấu căn",
@@ -778,6 +787,7 @@ function resetProgress() {
     {
       id: 10,
       name: "Căn bậc ba và căn thức bậc ba",
+      category: "Căn thức và biến đổi căn thức",
       levels: [
         { name: "Căn bậc ba", state: "lock", complete: "false" },
         { name: "Căn thức bậc ba", state: "lock", complete: "false" },
@@ -789,6 +799,7 @@ function resetProgress() {
     {
       id: 11,
       name: "Tỉ số lượng giác của góc nhọn",
+      category: "Lượng giác",
       levels: [
         {
           name: "Khái niệm tỉ số lượng giác của một góc nhọn",
@@ -806,6 +817,7 @@ function resetProgress() {
     {
       id: 12,
       name: "Một số hệ thức giữa cạnh, góc trong tam giác vuông và ứng dụng",
+      category: "Lượng giác",
       levels: [
         {
           name: "Hệ thức giữa cạnh huyền và cạnh góc vuông",
@@ -826,11 +838,13 @@ function resetProgress() {
     {
       id: 13,
       name: "Mở đầu về đường tròn",
+      category: "Hình học đường tròn",
       levels: [{ name: "Đường tròn", state: "lock", complete: "false" }],
     },
     {
       id: 14,
       name: "Cung và dây của một đường tròn",
+      category: "Hình học đường tròn",
       levels: [
         {
           name: "Dây và đường kính của đường tròn",
@@ -849,6 +863,7 @@ function resetProgress() {
       id: 15,
       name: `Độ dài của cung tròn <br> Diện tích hình quạt tròn và 
         hình vành khuyên`,
+      category: "Hình học đường tròn",
       levels: [
         { name: "Độ dài của cung tròn", state: "lock", complete: "false" },
         {
@@ -863,6 +878,7 @@ function resetProgress() {
     {
       id: 16,
       name: `Vị trí tương đối của đường thẳng và đường tròn`,
+      category: "Hình học đường tròn",
       levels: [
         {
           name: "Vị trí tương đối của đường thẳng và đường tròn",
@@ -880,6 +896,7 @@ function resetProgress() {
     {
       id: 17,
       name: `Vị trí tương đối của hai đường tròn`,
+      category: "Hình học đường tròn",
       levels: [
         { name: "Vận dụng", state: "lock", complete: "false" },
         { name: "Bài tập cuối chương V", state: "lock", complete: "false" },
@@ -888,6 +905,7 @@ function resetProgress() {
     {
       id: 18,
       name: `Hàm số y = ax² (a ≠ 0)`,
+      category: "Hàm số và đồ thị",
       levels: [
         { name: "Hàm số y = ax² (a ≠ 0)", state: "lock", complete: "false" },
         { name: "Vận dụng", state: "lock", complete: "false" },
@@ -896,6 +914,7 @@ function resetProgress() {
     {
       id: 19,
       name: `Phương trình bậc hai một ẩn`,
+      category: "Phương trình và hệ phương trình",
       levels: [
         {
           name: "Định nghĩa phương trình bậc hai một ẩn",
@@ -919,6 +938,7 @@ function resetProgress() {
     {
       id: 20,
       name: `Định lí viete và ứng dụng`,
+      category: "Phương trình và hệ phương trình",
       levels: [
         { name: "Định lí viete", state: "lock", complete: "false" },
         { name: "Áp dụng định lí viete", state: "lock", complete: "false" },
@@ -933,6 +953,7 @@ function resetProgress() {
     {
       id: 21,
       name: `Giải bài toán bằng cách lập phương trình`,
+      category: "Phương trình và hệ phương trình",
       levels: [
         { name: "Bài tập", state: "lock", complete: "false" },
         { name: "Bài tập cuối chương VI", state: "lock", complete: "false" },
@@ -941,11 +962,13 @@ function resetProgress() {
     {
       id: 22,
       name: `Bảng tần số và biểu đồ tần số`,
+      category: "Thống kê",
       levels: [{ name: "Vận dụng", state: "lock", complete: "false" }],
     },
     {
       id: 23,
       name: `Bảng tần số tương đối và biểu đồ tần số tương đối`,
+      category: "Thống kê",
       levels: [
         { name: "Bảng tần số tương đối", state: "lock", complete: "false" },
         { name: "Vận dụng", state: "lock", complete: "false" },
@@ -954,6 +977,7 @@ function resetProgress() {
     {
       id: 24,
       name: `Bảng tần số, tần số tương đối ghép nhóm và biểu đồ`,
+      category: "Thống kê",
       levels: [
         {
           name: "Bảng tần số, tần số tương đối ghép nhóm",
@@ -966,11 +990,13 @@ function resetProgress() {
     {
       id: 25,
       name: `Phép thử ngẫu nhiên và không gian mẫu`,
+      category: "Xác suất",
       levels: [{ name: "Vận dụng", state: "lock", complete: "false" }],
     },
     {
       id: 26,
       name: `Xác suất của biến cố có liên quan tới phép thử`,
+      category: "Xác suất",
       levels: [
         { name: "Vận dụng", state: "lock", complete: "false" },
         { name: "Bài tập cuối chương VIII", state: "lock", complete: "false" },
@@ -979,11 +1005,13 @@ function resetProgress() {
     {
       id: 27,
       name: `Góc nội tiếp`,
+      category: "Hình học đường tròn",
       levels: [{ name: "Vận dụng", state: "lock", complete: "false" }],
     },
     {
       id: 28,
       name: `Đường tròn ngoại tiếp và đường tròn nội tiếp của một tam giác`,
+      category: "Hình học đường tròn",
       levels: [
         {
           name: "Đường tròn ngoại tiếp một tam giác",
@@ -1001,6 +1029,7 @@ function resetProgress() {
     {
       id: 29,
       name: `Tứ giác nội tiếp`,
+      category: "Hình học đường tròn",
       levels: [
         {
           name: "Đường tròn ngoại tiếp một tứ giác",
@@ -1018,6 +1047,7 @@ function resetProgress() {
     {
       id: 30,
       name: `Đa giác đều`,
+      category: "Hình học không gian",
       levels: [
         { name: "Đa giác đều", state: "lock", complete: "false" },
         { name: "Bài tập cuối chương IX", state: "lock", complete: "false" },
@@ -1026,6 +1056,7 @@ function resetProgress() {
     {
       id: 31,
       name: `Hình trụ và hình nón`,
+      category: "Hình học không gian",
       levels: [
         { name: "Hình trụ", state: "lock", complete: "false" },
         { name: "Hình nón", state: "lock", complete: "false" },
@@ -1035,6 +1066,7 @@ function resetProgress() {
     {
       id: 32,
       name: `Hình cầu`,
+      category: "Hình học không gian",
       levels: [
         {
           name: "Diện tích mặt cầu và thể tích hình cầu",
@@ -1056,10 +1088,11 @@ function unlockAllUnits() {
     {
       id: 1,
       name: "Khái niệm phương trình và hệ hai phương trình bậc nhất hai ẩn",
+      category: "Phương trình và hệ phương trình",
       levels: [
         {
           name: "Phương trình bậc nhất hai ẩn",
-          state: "unlock",
+          state: "ununlock",
           complete: "false",
         },
         {
@@ -1077,6 +1110,7 @@ function unlockAllUnits() {
     {
       id: 2,
       name: "Giải hệ hai phương trình bậc nhất hai ẩn",
+      category: "Phương trình và hệ phương trình",
       levels: [
         {
           name: "Phương pháp thế",
@@ -1103,6 +1137,7 @@ function unlockAllUnits() {
     {
       id: 3,
       name: "Giải bài toán bằng cách lập hệ phương trình",
+      category: "Phương trình và hệ phương trình",
       levels: [
         {
           name: "Luyện tập",
@@ -1115,6 +1150,7 @@ function unlockAllUnits() {
     {
       id: 4,
       name: "Phương trình quy về phương trình bậc nhất một ẩn",
+      category: "Phương trình và hệ phương trình",
       levels: [
         {
           name: "Phương trình tích",
@@ -1136,6 +1172,7 @@ function unlockAllUnits() {
     {
       id: 5,
       name: "Bất đẳng thức và tính chất",
+      category: "Bất đẳng thức và bất phương trình",
       levels: [
         { name: "Bất đẳng thức", state: "unlock", complete: "false" },
         {
@@ -1155,6 +1192,7 @@ function unlockAllUnits() {
     {
       id: 6,
       name: "Bất phương trình bậc nhất một ẩn",
+      category: "Bất đẳng thức và bất phương trình",
       levels: [
         {
           name: "Khái niệm bất phương trình bậc nhất một ẩn",
@@ -1173,6 +1211,7 @@ function unlockAllUnits() {
     {
       id: 7,
       name: "Căn bậc hai và căn thức bậc hai",
+      category: "Căn thức và biến đổi căn thức",
       levels: [
         { name: "Căn bậc hai", state: "unlock", complete: "false" },
         { name: "Căn thức bậc hai", state: "unlock", complete: "false" },
@@ -1182,6 +1221,7 @@ function unlockAllUnits() {
     {
       id: 8,
       name: "Khai căn bậc hai với phép nhân và phép chia",
+      category: "Căn thức và biến đổi căn thức",
       levels: [
         {
           name: "Khai căn bậc hai và phép nhân",
@@ -1199,6 +1239,7 @@ function unlockAllUnits() {
     {
       id: 9,
       name: "Biến đổi đơn giản và rút gọn biểu thức chứa căn thức bậc hai",
+      category: "Căn thức và biến đổi căn thức",
       levels: [
         {
           name: "Đưa thừa số ra ngoài dấu căn",
@@ -1222,6 +1263,7 @@ function unlockAllUnits() {
     {
       id: 10,
       name: "Căn bậc ba và căn thức bậc ba",
+      category: "Căn thức và biến đổi căn thức",
       levels: [
         { name: "Căn bậc ba", state: "unlock", complete: "false" },
         { name: "Căn thức bậc ba", state: "unlock", complete: "false" },
@@ -1233,6 +1275,7 @@ function unlockAllUnits() {
     {
       id: 11,
       name: "Tỉ số lượng giác của góc nhọn",
+      category: "Lượng giác",
       levels: [
         {
           name: "Khái niệm tỉ số lượng giác của một góc nhọn",
@@ -1250,6 +1293,7 @@ function unlockAllUnits() {
     {
       id: 12,
       name: "Một số hệ thức giữa cạnh, góc trong tam giác vuông và ứng dụng",
+      category: "Lượng giác",
       levels: [
         {
           name: "Hệ thức giữa cạnh huyền và cạnh góc vuông",
@@ -1270,11 +1314,13 @@ function unlockAllUnits() {
     {
       id: 13,
       name: "Mở đầu về đường tròn",
+      category: "Hình học đường tròn",
       levels: [{ name: "Đường tròn", state: "unlock", complete: "false" }],
     },
     {
       id: 14,
       name: "Cung và dây của một đường tròn",
+      category: "Hình học đường tròn",
       levels: [
         {
           name: "Dây và đường kính của đường tròn",
@@ -1292,7 +1338,8 @@ function unlockAllUnits() {
     {
       id: 15,
       name: `Độ dài của cung tròn <br> Diện tích hình quạt tròn và 
-            hình vành khuyên`,
+        hình vành khuyên`,
+      category: "Hình học đường tròn",
       levels: [
         { name: "Độ dài của cung tròn", state: "unlock", complete: "false" },
         {
@@ -1307,6 +1354,7 @@ function unlockAllUnits() {
     {
       id: 16,
       name: `Vị trí tương đối của đường thẳng và đường tròn`,
+      category: "Hình học đường tròn",
       levels: [
         {
           name: "Vị trí tương đối của đường thẳng và đường tròn",
@@ -1324,6 +1372,7 @@ function unlockAllUnits() {
     {
       id: 17,
       name: `Vị trí tương đối của hai đường tròn`,
+      category: "Hình học đường tròn",
       levels: [
         { name: "Vận dụng", state: "unlock", complete: "false" },
         { name: "Bài tập cuối chương V", state: "unlock", complete: "false" },
@@ -1332,6 +1381,7 @@ function unlockAllUnits() {
     {
       id: 18,
       name: `Hàm số y = ax² (a ≠ 0)`,
+      category: "Hàm số và đồ thị",
       levels: [
         { name: "Hàm số y = ax² (a ≠ 0)", state: "unlock", complete: "false" },
         { name: "Vận dụng", state: "unlock", complete: "false" },
@@ -1340,6 +1390,7 @@ function unlockAllUnits() {
     {
       id: 19,
       name: `Phương trình bậc hai một ẩn`,
+      category: "Phương trình và hệ phương trình",
       levels: [
         {
           name: "Định nghĩa phương trình bậc hai một ẩn",
@@ -1363,6 +1414,7 @@ function unlockAllUnits() {
     {
       id: 20,
       name: `Định lí viete và ứng dụng`,
+      category: "Phương trình và hệ phương trình",
       levels: [
         { name: "Định lí viete", state: "unlock", complete: "false" },
         { name: "Áp dụng định lí viete", state: "unlock", complete: "false" },
@@ -1377,6 +1429,7 @@ function unlockAllUnits() {
     {
       id: 21,
       name: `Giải bài toán bằng cách lập phương trình`,
+      category: "Phương trình và hệ phương trình",
       levels: [
         { name: "Bài tập", state: "unlock", complete: "false" },
         { name: "Bài tập cuối chương VI", state: "unlock", complete: "false" },
@@ -1385,11 +1438,13 @@ function unlockAllUnits() {
     {
       id: 22,
       name: `Bảng tần số và biểu đồ tần số`,
+      category: "Thống kê",
       levels: [{ name: "Vận dụng", state: "unlock", complete: "false" }],
     },
     {
       id: 23,
       name: `Bảng tần số tương đối và biểu đồ tần số tương đối`,
+      category: "Thống kê",
       levels: [
         { name: "Bảng tần số tương đối", state: "unlock", complete: "false" },
         { name: "Vận dụng", state: "unlock", complete: "false" },
@@ -1398,6 +1453,7 @@ function unlockAllUnits() {
     {
       id: 24,
       name: `Bảng tần số, tần số tương đối ghép nhóm và biểu đồ`,
+      category: "Thống kê",
       levels: [
         {
           name: "Bảng tần số, tần số tương đối ghép nhóm",
@@ -1410,28 +1466,28 @@ function unlockAllUnits() {
     {
       id: 25,
       name: `Phép thử ngẫu nhiên và không gian mẫu`,
+      category: "Xác suất",
       levels: [{ name: "Vận dụng", state: "unlock", complete: "false" }],
     },
     {
       id: 26,
       name: `Xác suất của biến cố có liên quan tới phép thử`,
+      category: "Xác suất",
       levels: [
         { name: "Vận dụng", state: "unlock", complete: "false" },
-        {
-          name: "Bài tập cuối chương VIII",
-          state: "unlock",
-          complete: "false",
-        },
+        { name: "Bài tập cuối chương VIII", state: "unlock", complete: "false" },
       ],
     },
     {
       id: 27,
       name: `Góc nội tiếp`,
+      category: "Hình học đường tròn",
       levels: [{ name: "Vận dụng", state: "unlock", complete: "false" }],
     },
     {
       id: 28,
       name: `Đường tròn ngoại tiếp và đường tròn nội tiếp của một tam giác`,
+      category: "Hình học đường tròn",
       levels: [
         {
           name: "Đường tròn ngoại tiếp một tam giác",
@@ -1449,6 +1505,7 @@ function unlockAllUnits() {
     {
       id: 29,
       name: `Tứ giác nội tiếp`,
+      category: "Hình học đường tròn",
       levels: [
         {
           name: "Đường tròn ngoại tiếp một tứ giác",
@@ -1466,6 +1523,7 @@ function unlockAllUnits() {
     {
       id: 30,
       name: `Đa giác đều`,
+      category: "Hình học không gian",
       levels: [
         { name: "Đa giác đều", state: "unlock", complete: "false" },
         { name: "Bài tập cuối chương IX", state: "unlock", complete: "false" },
@@ -1474,6 +1532,7 @@ function unlockAllUnits() {
     {
       id: 31,
       name: `Hình trụ và hình nón`,
+      category: "Hình học không gian",
       levels: [
         { name: "Hình trụ", state: "unlock", complete: "false" },
         { name: "Hình nón", state: "unlock", complete: "false" },
@@ -1483,6 +1542,7 @@ function unlockAllUnits() {
     {
       id: 32,
       name: `Hình cầu`,
+      category: "Hình học không gian",
       levels: [
         {
           name: "Diện tích mặt cầu và thể tích hình cầu",
