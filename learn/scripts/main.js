@@ -1593,3 +1593,22 @@ function saveScrollPosition() {
 //     const rightSection = document.querySelector('.right-section');
 //     rightSection.innerHTML = html;
 // }
+document.addEventListener("DOMContentLoaded", function () {
+
+  const unitsList = document.getElementById("units-list");
+
+  units.forEach((unit) => {
+    const unitItem = document.createElement("li");
+    unitItem.innerHTML = `<h3>${unit.name}</h3>`;
+    const levelsList = document.createElement("ul");
+
+    unit.levels.forEach((level) => {
+      const levelItem = document.createElement("li");
+      levelItem.textContent = `${level.name} (${level.state})`;
+      levelsList.appendChild(levelItem);
+    });
+
+    unitItem.appendChild(levelsList);
+    unitsList.appendChild(unitItem);
+  });
+});
