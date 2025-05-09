@@ -69,6 +69,7 @@ nav {
   align-items: center;
   justify-content: left;
   padding: 20px;
+  transition: transform 0.3s ease-in-out;
 }
 
 /* Style for each div in nav */
@@ -275,18 +276,21 @@ nav img {
 }
 
 .category-title {
-  display: inline-block;
-  font-size: 24px; /* Kích thước chữ lớn hơn */
+  display: block;
+  font-size: 17px; /* Kích thước chữ lớn hơn */
   font-weight: bold; /* Làm chữ đậm */
   color: #ffffff; /* Màu chữ trắng */
-  padding: 10px 15px; /* Thêm khoảng cách */
-  background: linear-gradient(90deg, #ff8a00, #e52e71); /* Gradient màu cam và hồng */
+  padding: 10px 15px;
+  background: linear-gradient(90deg, #ff8a00, #e52e71);
   border-radius: 8px; /* Bo góc mềm mại */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Hiệu ứng đổ bóng */
-  transition: transform 0.3s ease, font-size 0.3s ease; /* Hiệu ứng mượt mà */
+  transition: transform 0.3s ease, font-size 0.3s ease;
+  white-space: nowrap; /* Đảm bảo chỉ hiển thị trên 1 hàng */
+  overflow: hidden; /* Ẩn phần chữ bị tràn */
+  text-overflow: ellipsis; /* Thêm dấu "..." khi chữ bị cắt */
 }
 .category.open > .category-title {
-  transform: rotate(270deg); /* Quay 270 độ khi mở */
+  font-size: 17px;
 }
 
 .fixed-category-title {

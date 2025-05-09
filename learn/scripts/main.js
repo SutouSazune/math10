@@ -894,5 +894,21 @@ document.addEventListener("DOMContentLoaded", function () {
     unitItem.appendChild(levelsList);
     unitsList.appendChild(unitItem);
   });
+  // let lastScrollTop = 0; // Lưu vị trí cuộn trước đó
+  //   const navbar = document.querySelector("nav"); // Chọn thanh điều hướng
+
+  //   window.addEventListener("scroll", function () {
+  //     const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+
+  //     if (currentScroll > lastScrollTop) {
+  //       // Cuộn xuống
+  //       navbar.style.transform = "translateY(-100%)"; // Ẩn thanh điều hướng
+  //     } else {
+  //       // Cuộn lên
+  //       navbar.style.transform = "translateY(0)"; // Hiện thanh điều hướng
+  //     }
+
+  //     lastScrollTop = currentScroll <= 0 ? 0 : currentScroll; // Đảm bảo giá trị không âm
+  //   });
 
 });
