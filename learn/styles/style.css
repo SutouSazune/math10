@@ -108,11 +108,14 @@ nav img {
   background-color: #ffffff;
   overflow-y: auto;
   box-shadow: inset 0px 4px 10px rgba(0, 0, 0, 0.05); /* Subtle shadow */
+  position: relative;
+  overflow: hidden; /* Đảm bảo nội dung không bị tràn */
+  transition: height 0.3s ease; /* Thêm hiệu ứng mượt mà */
 }
 
 .mid-section h1 {
   color: rgb(34, 139, 230);
-  font-size: 50px;
+  font-size: 48px;
   text-align: center;
   border-bottom: 2px solid rgb(230, 230, 230);
 }
@@ -126,17 +129,22 @@ nav img {
 .unit-name {
   display: flex;
   align-items: center;
-  font-size: 26px;
+  justify-content: center;
+  font-size: 28px;
   font-weight: bold;
-  color: rgb(161, 0, 182);
-  margin-top: 100px;
+  color: white;
+  background: linear-gradient(90deg, #6a11cb, #2575fc); /* Gradient màu tím và xanh */
+  padding: 15px 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Hiệu ứng đổ bóng */
+  text-align: center;
+  margin: 20px 0;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.unit-name::before {
-  content: "";
-  background: linear-gradient(to right, rgb(161, 0, 182), rgba(0, 0, 0, 0));
-  width: 10%;
-  height: 60px;
+.unit-name:hover {
+  transform: scale(1.05); /* Phóng to nhẹ khi hover */
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3); /* Đổ bóng mạnh hơn khi hover */
 }
 
 .unit-levels {
@@ -201,6 +209,102 @@ nav img {
 
 .level:nth-child(even) {
   margin-left: 50px;
+}
+
+.category {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  font-weight: bold;
+  color: #ffffff;
+  background: linear-gradient(90deg, #ff8a00, #e52e71); /* Gradient màu cam và hồng */
+  padding: 10px 15px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Hiệu ứng đổ bóng */
+  margin: 15px 0;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.category:hover {
+  transform: scale(1.05); /* Phóng to nhẹ khi hover */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Đổ bóng mạnh hơn khi hover */
+}
+
+.category.open:hover {
+  transform: none; /* Không phóng to khi category đang mở */
+  box-shadow: none; /* Loại bỏ đổ bóng khi category đang mở */
+}
+
+.category::after {
+  content: "▼"; /* Mũi tên chỉ xuống khi đóng */
+  position: absolute;
+  right: 15px; /* Căn mũi tên ở góc phải */
+  font-size: 20px;
+  color: rgba(255, 255, 255, 0.8); /* Màu mờ */
+  transition: transform 0.3s ease;
+}
+
+.category.open::after {
+  content: "▲"; /* Mũi tên chỉ lên khi mở */
+  transform: rotate(180deg); /* Quay mũi tên */
+}
+
+.category + .category-units.show ~ .category:hover {
+  transform: none; /* Không phóng to khi category đang mở */
+  box-shadow: none; /* Loại bỏ đổ bóng khi category đang mở */
+}
+
+.category.no-hover:hover {
+  transform: none; /* Không phóng to khi category đang mở */
+  box-shadow: none; /* Loại bỏ đổ bóng khi category đang mở */
+}
+
+.category-units {
+  display: none;
+  opacity: 0;
+  transform: scale(0.95) translateY(-20px); /* Thu nhỏ và trượt lên khi ẩn */
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.category-units.show {
+  display: block;
+  opacity: 1;
+  transform: scale(1) translateY(0); /* Phóng to và trượt xuống khi hiển thị */
+}
+
+.category-title {
+  display: inline-block;
+  font-size: 24px; /* Kích thước chữ lớn hơn */
+  font-weight: bold; /* Làm chữ đậm */
+  color: #ffffff; /* Màu chữ trắng */
+  padding: 10px 15px; /* Thêm khoảng cách */
+  background: linear-gradient(90deg, #ff8a00, #e52e71); /* Gradient màu cam và hồng */
+  border-radius: 8px; /* Bo góc mềm mại */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Hiệu ứng đổ bóng */
+  transition: transform 0.3s ease, font-size 0.3s ease; /* Hiệu ứng mượt mà */
+}
+.category.open > .category-title {
+  transform: rotate(270deg); /* Quay 270 độ khi mở */
+}
+
+.fixed-category-title {
+  position: sticky; /* Giữ cố định khi cuộn */
+  top: 0; /* Cố định ở đầu category */
+  z-index: 10; /* Đảm bảo nằm trên các phần tử khác */
+  background: linear-gradient(90deg, #ff8a00, #e52e71); /* Gradient màu cam và hồng */
+  color: #ffffff; /* Màu chữ trắng */
+  font-size: 20px; /* Kích thước chữ */
+  font-weight: bold; /* Làm chữ đậm */
+  padding: 10px 15px; /* Thêm khoảng cách */
+  border-radius: 8px; /* Bo góc mềm mại */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Hiệu ứng đổ bóng */
+  text-align: center; /* Căn giữa chữ */
+}
+
+.hidden-title {
+  display: none; /* Ẩn dòng chữ */
 }
 
 /* Intro level */
