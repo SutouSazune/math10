@@ -700,6 +700,7 @@ document.addEventListener("DOMContentLoaded", () => {
             // Update localStorage if param exists
             if (isCompleteFromParams) {
               units[unitIndex].levels[levelIndex].complete = "true";
+              localStorage.setItem("units", JSON.stringify(units));
             }
           }
         }
