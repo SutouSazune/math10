@@ -1,5 +1,5 @@
-// JSON.parse(localStorage.getItem("units")) ||
-let units = [
+// 
+let units = JSON.parse(localStorage.getItem("units")) || [
   {
     id: 1,
     name: "Khái niệm phương trình và hệ hai phương trình bậc nhất hai ẩn",
