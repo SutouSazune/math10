@@ -44,9 +44,9 @@ const questions = [
             Hãy xác định số lượng người mất hơn 45 phút để đi làm.
         `,
         answers: [
-            `3`,
-            `2`,
             `4`,
+            `2`,
+            `3`,
             `1`,
         ],
         explain: `
