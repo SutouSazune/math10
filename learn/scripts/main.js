@@ -29,7 +29,7 @@ let units = JSON.parse(localStorage.getItem("units")) || [
     levels: [
       {
         name: "Phương pháp thế",
-        state: "lock",
+        state: "unlock",
         complete: "false",
       },
       {
@@ -56,7 +56,7 @@ let units = JSON.parse(localStorage.getItem("units")) || [
     levels: [
       {
         name: "Luyện tập",
-        state: "lock",
+        state: "unlock",
         complete: "false",
       },
       { name: "Bài tập cuối chương I", state: "lock", complete: "false" },
@@ -69,7 +69,7 @@ let units = JSON.parse(localStorage.getItem("units")) || [
     levels: [
       {
         name: "Phương trình tích",
-        state: "lock",
+        state: "unlock",
         complete: "false",
       },
       {
@@ -92,7 +92,7 @@ let units = JSON.parse(localStorage.getItem("units")) || [
       { name: "Bất đẳng thức", state: "lock", complete: "false" },
       {
         name: "Liên hệ giữa thứ tự và phép cộng",
-        state: "lock",
+        state: "unlock",
         complete: "false",
       },
       {
@@ -111,7 +111,7 @@ let units = JSON.parse(localStorage.getItem("units")) || [
     levels: [
       {
         name: "Khái niệm bất phương trình bậc nhất một ẩn",
-        state: "lock",
+        state: "unlock",
         complete: "false",
       },
       {
@@ -128,7 +128,7 @@ let units = JSON.parse(localStorage.getItem("units")) || [
     name: "Căn bậc hai và căn thức bậc hai",
     category: "Căn thức và biến đổi căn thức",
     levels: [
-      { name: "Căn bậc hai", state: "lock", complete: "false" },
+      { name: "Căn bậc hai", state: "unlock", complete: "false" },
       { name: "Căn thức bậc hai", state: "lock", complete: "false" },
       { name: "Vận dụng", state: "lock", complete: "false" },
     ],
@@ -140,7 +140,7 @@ let units = JSON.parse(localStorage.getItem("units")) || [
     levels: [
       {
         name: "Khai căn bậc hai và phép nhân",
-        state: "lock",
+        state: "unlock",
         complete: "false",
       },
       {
@@ -158,7 +158,7 @@ let units = JSON.parse(localStorage.getItem("units")) || [
     levels: [
       {
         name: "Đưa thừa số ra ngoài dấu căn",
-        state: "lock",
+        state: "unlock",
         complete: "false",
       },
       {
@@ -180,7 +180,7 @@ let units = JSON.parse(localStorage.getItem("units")) || [
     name: "Căn bậc ba và căn thức bậc ba",
     category: "Căn thức và biến đổi căn thức",
     levels: [
-      { name: "Căn bậc ba", state: "lock", complete: "false" },
+      { name: "Căn bậc ba", state: "unlock", complete: "false" },
       { name: "Căn thức bậc ba", state: "lock", complete: "false" },
       { name: "Vận dụng", state: "lock", complete: "false" },
       { name: "Luyện tập chung", state: "lock", complete: "false" },
@@ -194,7 +194,7 @@ let units = JSON.parse(localStorage.getItem("units")) || [
     levels: [
       {
         name: "Khái niệm tỉ số lượng giác của một góc nhọn",
-        state: "lock",
+        state: "unlock",
         complete: "false",
       },
       {
@@ -212,7 +212,7 @@ let units = JSON.parse(localStorage.getItem("units")) || [
     levels: [
       {
         name: "Hệ thức giữa cạnh huyền và cạnh góc vuông",
-        state: "lock",
+        state: "unlock",
         complete: "false",
       },
       {
@@ -220,7 +220,7 @@ let units = JSON.parse(localStorage.getItem("units")) || [
         state: "lock",
         complete: "false",
       },
-      { name: "Giải tam giác vuông", state: "lock", complete: "false" },
+      { name: "Giải tam giác vuông", state: "unlock", complete: "false" },
       { name: "Vận dụng", state: "lock", complete: "false" },
       { name: "Luyện tập chung", state: "lock", complete: "false" },
       { name: "Bài tập cuối chương IV", state: "lock", complete: "false" },
@@ -230,7 +230,7 @@ let units = JSON.parse(localStorage.getItem("units")) || [
     id: 13,
     name: "Mở đầu về đường tròn",
     category: "Hình học đường tròn",
-    levels: [{ name: "Đường tròn", state: "lock", complete: "false" }],
+    levels: [{ name: "Đường tròn", state: "unlock", complete: "false" }],
   },
   {
     id: 14,
@@ -239,7 +239,7 @@ let units = JSON.parse(localStorage.getItem("units")) || [
     levels: [
       {
         name: "Dây và đường kính của đường tròn",
-        state: "lock",
+        state: "unlock",
         complete: "false",
       },
       {
@@ -256,7 +256,7 @@ let units = JSON.parse(localStorage.getItem("units")) || [
         hình vành khuyên`,
     category: "Hình học đường tròn",
     levels: [
-      { name: "Độ dài của cung tròn", state: "lock", complete: "false" },
+      { name: "Độ dài của cung tròn", state: "unlock", complete: "false" },
       {
         name: "Hình quạt tròn và hình vành khuyên",
         state: "lock",
@@ -273,7 +273,7 @@ let units = JSON.parse(localStorage.getItem("units")) || [
     levels: [
       {
         name: "Vị trí tương đối của đường thẳng và đường tròn",
-        state: "lock",
+        state: "unlock",
         complete: "false",
       },
       {
@@ -289,7 +289,7 @@ let units = JSON.parse(localStorage.getItem("units")) || [
     name: `Vị trí tương đối của hai đường tròn`,
     category: "Hình học đường tròn",
     levels: [
-      { name: "Vận dụng", state: "lock", complete: "false" },
+      { name: "Vận dụng", state: "unlock", complete: "false" },
       { name: "Bài tập cuối chương V", state: "lock", complete: "false" },
     ],
   },
@@ -298,7 +298,7 @@ let units = JSON.parse(localStorage.getItem("units")) || [
     name: `Hàm số y = ax² (a ≠ 0)`,
     category: "Hàm số và đồ thị",
     levels: [
-      { name: "Hàm số y = ax² (a ≠ 0)", state: "lock", complete: "false" },
+      { name: "Hàm số y = ax² (a ≠ 0)", state: "unlock", complete: "false" },
       { name: "Vận dụng", state: "lock", complete: "false" },
     ],
   },
@@ -309,7 +309,7 @@ let units = JSON.parse(localStorage.getItem("units")) || [
     levels: [
       {
         name: "Định nghĩa phương trình bậc hai một ẩn",
-        state: "lock",
+        state: "unlock",
         complete: "false",
       },
       {
@@ -331,7 +331,7 @@ let units = JSON.parse(localStorage.getItem("units")) || [
     name: `Định lí viete và ứng dụng`,
     category: "Phương trình và hệ phương trình",
     levels: [
-      { name: "Định lí viete", state: "lock", complete: "false" },
+      { name: "Định lí viete", state: "unlock", complete: "false" },
       { name: "Áp dụng định lí viete", state: "lock", complete: "false" },
       {
         name: "Tìm hai số khi biết tổng và tích của chúng",
@@ -346,7 +346,7 @@ let units = JSON.parse(localStorage.getItem("units")) || [
     name: `Giải bài toán bằng cách lập phương trình`,
     category: "Phương trình và hệ phương trình",
     levels: [
-      { name: "Bài tập", state: "lock", complete: "false" },
+      { name: "Bài tập", state: "unlock", complete: "false" },
       { name: "Bài tập cuối chương VI", state: "lock", complete: "false" },
     ],
   },
@@ -354,14 +354,14 @@ let units = JSON.parse(localStorage.getItem("units")) || [
     id: 22,
     name: `Bảng tần số và biểu đồ tần số`,
     category: "Thống kê",
-    levels: [{ name: "Vận dụng", state: "lock", complete: "false" }],
+    levels: [{ name: "Vận dụng", state: "unlock", complete: "false" }],
   },
   {
     id: 23,
     name: `Bảng tần số tương đối và biểu đồ tần số tương đối`,
     category: "Thống kê",
     levels: [
-      { name: "Bảng tần số tương đối", state: "lock", complete: "false" },
+      { name: "Bảng tần số tương đối", state: "unlock", complete: "false" },
       { name: "Vận dụng", state: "lock", complete: "false" },
     ],
   },
@@ -372,7 +372,7 @@ let units = JSON.parse(localStorage.getItem("units")) || [
     levels: [
       {
         name: "Bảng tần số, tần số tương đối ghép nhóm",
-        state: "lock",
+        state: "unlock",
         complete: "false",
       },
       { name: "Bài tập cuối chương VII", state: "lock", complete: "false" },
@@ -382,14 +382,14 @@ let units = JSON.parse(localStorage.getItem("units")) || [
     id: 25,
     name: `Phép thử ngẫu nhiên và không gian mẫu`,
     category: "Xác suất",
-    levels: [{ name: "Vận dụng", state: "lock", complete: "false" }],
+    levels: [{ name: "Vận dụng", state: "unlock", complete: "false" }],
   },
   {
     id: 26,
     name: `Xác suất của biến cố có liên quan tới phép thử`,
     category: "Xác suất",
     levels: [
-      { name: "Vận dụng", state: "lock", complete: "false" },
+      { name: "Vận dụng", state: "unlock", complete: "false" },
       { name: "Bài tập cuối chương VIII", state: "lock", complete: "false" },
     ],
   },
@@ -397,7 +397,7 @@ let units = JSON.parse(localStorage.getItem("units")) || [
     id: 27,
     name: `Góc nội tiếp`,
     category: "Hình học đường tròn",
-    levels: [{ name: "Vận dụng", state: "lock", complete: "false" }],
+    levels: [{ name: "Vận dụng", state: "unlock", complete: "false" }],
   },
   {
     id: 28,
@@ -406,7 +406,7 @@ let units = JSON.parse(localStorage.getItem("units")) || [
     levels: [
       {
         name: "Đường tròn ngoại tiếp một tam giác",
-        state: "lock",
+        state: "unlock",
         complete: "false",
       },
       {
@@ -424,7 +424,7 @@ let units = JSON.parse(localStorage.getItem("units")) || [
     levels: [
       {
         name: "Đường tròn ngoại tiếp một tứ giác",
-        state: "lock",
+        state: "unlock",
         complete: "false",
       },
       {
@@ -440,7 +440,7 @@ let units = JSON.parse(localStorage.getItem("units")) || [
     name: `Đa giác đều`,
     category: "Hình học không gian",
     levels: [
-      { name: "Đa giác đều", state: "lock", complete: "false" },
+      { name: "Đa giác đều", state: "unlock", complete: "false" },
       { name: "Bài tập cuối chương IX", state: "lock", complete: "false" },
     ],
   },
@@ -449,7 +449,7 @@ let units = JSON.parse(localStorage.getItem("units")) || [
     name: `Hình trụ và hình nón`,
     category: "Hình học không gian",
     levels: [
-      { name: "Hình trụ", state: "lock", complete: "false" },
+      { name: "Hình trụ", state: "unlock", complete: "false" },
       { name: "Hình nón", state: "lock", complete: "false" },
       { name: "Vận dụng", state: "lock", complete: "false" },
     ],
@@ -461,7 +461,7 @@ let units = JSON.parse(localStorage.getItem("units")) || [
     levels: [
       {
         name: "Diện tích mặt cầu và thể tích hình cầu",
-        state: "lock",
+        state: "unlock",
         complete: "false",
       },
       { name: "Vận dụng", state: "lock", complete: "false" },
@@ -495,23 +495,23 @@ function getUniqueCategories(units) {
   return categories;
 }
 
-function unlockFirstLevelOfEachUnit() {
-  console.log("Unlocking the first level of each unit...");
+// function unlockFirstLevelOfEachUnit() {
+//   console.log("Unlocking the first level of each unit...");
   
-  units.forEach((unit, index) => {
-    if (unit.levels && unit.levels.length > 0) {
-      unit.levels[0].state = "unlock"; // Unlock level đầu tiên
-      unit.levels[0].complete = "false"; // Không đánh dấu là complete
-      console.log(`Unit ${index + 1}: First level unlocked.`);
-    } else {
-      console.warn(`Unit ${index + 1} has no levels.`);
-    }
-  });
+//   units.forEach((unit, index) => {
+//     if (unit.levels && unit.levels.length > 0) {
+//       unit.levels[0].state = "unlock"; // Unlock level đầu tiên
+//       unit.levels[0].complete = "false"; // Không đánh dấu là complete
+//       console.log(`Unit ${index + 1}: First level unlocked.`);
+//     } else {
+//       console.warn(`Unit ${index + 1} has no levels.`);
+//     }
+//   });
 
-  // Lưu lại thay đổi vào localStorage
-  localStorage.setItem("units", JSON.stringify(units));
-  console.log("Updated units saved to localStorage.");
-}
+//   // Lưu lại thay đổi vào localStorage
+//   localStorage.setItem("units", JSON.stringify(units));
+//   console.log("Updated units saved to localStorage.");
+// }
 
 // Sử dụng hàm để lấy danh sách các category duy nhất
 const uniqueCategories = getUniqueCategories(units);
@@ -772,7 +772,7 @@ function addEvent() {
 
 // Gọi hàm sau khi hiển thị nội dung
 // resetUnits();
-unlockFirstLevelOfEachUnit();
+// unlockFirstLevelOfEachUnit();
 displayUnits();
 addEvent();
 saveScrollPosition();
