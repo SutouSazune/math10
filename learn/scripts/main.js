@@ -743,9 +743,6 @@ function update(unitIndex, levelIndex, state, complete) {
   }
   }
   localStorage.setItem("units", JSON.stringify(units));
-  if (window.location.pathname !== "/math10/learn/") {
-    window.location.href = "/math10/learn/";
-  }
 // ======
 function addEvent() {
   // Lấy tất cả các level-btn có trạng thái unlock
