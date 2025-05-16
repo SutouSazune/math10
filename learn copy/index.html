@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Math10</title>
+    <link rel="stylesheet" href="styles/style.css" />
+    <link
+      rel="icon"
+      href="../learn/assets/images/math-logo.svg"
+      type="image/svg+xml"
+    />
+  </head>
+  <body>
+    <div
+      id="loading-screen"
+      class="loading-screen"
+      style="
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: black;
+        z-index: 9999;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        transition: opacity 1s;
+      "
+    >
+      <div class="container" style="margin-bottom: 20px">
+        <div class="macbook">
+          <div class="macbook__topBord">
+            <div class="macbook__display">
+              <div class="macbook__load"></div>
+            </div>
+          </div>
+          <div class="macbook__underBord">
+            <div class="macbook__keybord">
+              <div class="keybord">
+                <div class="keybord__touchbar"></div>
+                <ul class="keybord__keyBox">
+                  <li class="keybord__key key--01"></li>
+                  <li class="keybord__key key--02"></li>
+                  <li class="keybord__key key--03"></li>
+                  <li class="keybord__key key--04"></li>
+                  <li class="keybord__key key--05"></li>
+                  <li class="keybord__key key--06"></li>
+                  <li class="keybord__key key--07"></li>
+                  <li class="keybord__key key--08"></li>
+                  <li class="keybord__key key--09"></li>
+                  <li class="keybord__key key--10"></li>
+                  <li class="keybord__key key--11"></li>
+                  <li class="keybord__key key--12"></li>
+                  <li class="keybord__key key--13"></li>
+                </ul>
+                <ul class="keybord__keyBox--under">
+                  <li class="keybord__key key--14"></li>
+                  <li class="keybord__key key--15"></li>
+                  <li class="keybord__key key--16"></li>
+                  <li class="keybord__key key--17"></li>
+                  <li class="keybord__key key--18"></li>
+                  <li class="keybord__key key--19"></li>
+                  <li class="keybord__key key--20"></li>
+                  <li class="keybord__key key--21"></li>
+                  <li class="keybord__key key--22"></li>
+                  <li class="keybord__key key--23"></li>
+                  <li class="keybord__key key--24"></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="glitch"
+        style="top: -50px; opacity: 0; transition: opacity 2s; text-align: center;"
+      >
+        Loading ...
+      </div>
+    </div>
+    <div
+      class="screen"
+      style="display: none; opacity: 0; transition: opacity 1s"
+    ></div>
+    <nav style="
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #4CAF50;
+      padding: 10px 20px;
+      box-shadow: 0 4px 6px #388E3C;
+      top: 0;
+      z-index: 1000;
+      font-size: 1.1rem;
+    ">
+      <a href="../hub/" class="nav-logo" style="
+      margin-right: auto;
+      padding: 8px 16px;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: linear-gradient(90deg, #4CAF50, #388E3C);
+      border-radius: 8px;
+      box-shadow: 0 4px 6px #388E3C;
+      color: #fff;
+      font-weight: bold;
+      ">
+      <img src="../learn/assets/images/math-logo.svg" alt="Math10 Logo" style="height: 40px;">
+      <span style="font-size: 1.2rem;">Math10</span>
+      </a>
+      <div style="display: flex; gap: 15px;">
+      <a href="/learn/" class="nav-link" style="
+      padding: 8px 16px;
+      background: linear-gradient(90deg, #FFC107, #FFA000);
+      border-radius: 8px;
+      box-shadow: 0 4px 6px rgba(255, 193, 7, 0.3);
+      font-weight: bold;
+      transition: transform 0.3s, box-shadow 0.3s;
+      text-decoration: none;
+      color: #fff;
+      ">
+      Ôn luyện
+      </a>
+      <a href="/onchuyen/" class="nav-link"
+      style="
+      padding: 8px 16px;
+      background: linear-gradient(90deg, #a305fe, #db33ee);
+      border-radius: 8px;
+      box-shadow: 0 4px 6px rgba(255, 87, 34, 0.3);
+      font-weight: bold;
+      transition: transform 0.3s, box-shadow 0.3s;
+      text-decoration: none;
+      color: #fff;">
+                 Ôn vào trường chuyên
+             </a>
+      <a href="/exercise/" class="nav-link" style="
+      padding: 8px 16px;
+      background: linear-gradient(90deg, #FF5722, #E64A19);
+      border-radius: 8px;
+      box-shadow: 0 4px 6px rgba(255, 87, 34, 0.3);
+      font-weight: bold;
+      transition: transform 0.3s, box-shadow 0.3s;
+      text-decoration: none;
+      color: #fff;
+      ">
+      Thi thử
+      </a>
+      <a href="/download/" class="nav-link" style="
+      padding: 8px 16px;
+      background: linear-gradient(90deg, #2196F3, #1976D2);
+      border-radius: 8px;
+      box-shadow: 0 4px 6px rgba(33, 150, 243, 0.3);
+      font-weight: bold;
+      transition: transform 0.3s, box-shadow 0.3s;
+      text-decoration: none;
+      color: #fff;
+      ">
+      Tải về
+      </a>
+      </div>
+    </nav>
+    <div class="mid-section">
+      <div class="units-container">
+        <h2>Danh sách các đơn vị</h2>
+        <ul id="units-list"></ul>
+      </div>
+    </div>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const loadingScreen = document.getElementById("loading-screen");
+        const mainScreen = document.querySelector(".screen");
+        const body = document.body;
+        const glitchText = document.querySelector(".glitch");
+        const messages = ["Học tập là con mắt của trí tuệ.", "Học tập là hạt giống của kiến thức.", "Giáo dục là vũ khí mạnh nhất.","Đừng bao giờ ngừng học tập.  ", "Học tập giống như leo núi."];
+        const randomMessage = messages[Math.floor(Math.random() * messages.length)];
+        body.style.overflow = "hidden";
+
+        setTimeout(() => {
+          loadingScreen.style.opacity = "0";
+          loadingScreen.style.transition = "opacity 1s";
+          setTimeout(() => {
+            loadingScreen.style.display = "none";
+            mainScreen.style.display = "none"; // Ensure the panel remains hidden
+            body.style.overflow = "";
+          }, 1000); // Wait for the fade-out transition
+        }, 4000); // Simulate a 2-second loading time
+
+          glitchText.textContent = randomMessage;
+          glitchText.setAttribute("data-text", randomMessage);
+
+          setTimeout(() => {
+        glitchText.style.opacity = "1";
+          }, 500); // Delay before fade-in starts
+      });
+    </script>
+    <script src="scripts/main.js"></script>
+  </body>
+</html>
