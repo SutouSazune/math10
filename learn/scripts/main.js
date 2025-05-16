@@ -700,7 +700,11 @@ document.addEventListener("DOMContentLoaded", () => {
             // Update localStorage if param exists
             if (isCompleteFromParams) {
               units[unitIndex].levels[levelIndex].complete = "true";
-              console.log('Added complete dtb: unit .unit${unitIndex + 1}-level${levelIndex + 1}')
+              console.log(
+              `Added 'complete' class to .unit${unitIndex + 1}-level${
+                levelIndex + 1
+              }`
+            );
               localStorage.setItem("units", JSON.stringify(units));
             }
           }
