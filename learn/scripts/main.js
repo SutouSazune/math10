@@ -473,7 +473,6 @@ let units = JSON.parse(localStorage.getItem("units")) || [
 console.log("Initial units from localStorage:", units);
 localStorage.setItem("units", JSON.stringify(units));
 console.log("Units data from localStorage:", JSON.parse(localStorage.getItem("units")));
-console.log("Data from localStorage:", localStorage.getItem("units"));
 
 function resetDatabase() {
   localStorage.removeItem("units");
@@ -814,7 +813,7 @@ function unlockAllUnits() {
     levels: [
       {
         name: "Phương trình bậc nhất hai ẩn",
-        state: "ununlock",
+        state: "unlock",
         complete: "false",
       },
       {
@@ -1341,7 +1340,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     unit.levels.forEach((level) => {
       const levelItem = document.createElement("li");
-      levelItem.textContent = `${level.name} (${level.state})`;
+      levelItem.innerHTML = `${level.name} (${level.state})`;
       levelsList.appendChild(levelItem);
     });
 
