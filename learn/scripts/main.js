@@ -700,8 +700,7 @@ document.addEventListener("DOMContentLoaded", () => {
             // Update localStorage if param exists
             if (isCompleteFromParams) {
               units[unitIndex].levels[levelIndex].complete = "true";
-              console.log('Added complete dtb: unit .unit${unitIndex + 1}-level${
-                levelIndex + 1}')
+              console.log('Added complete dtb: unit .unit${unitIndex + 1}-level${levelIndex + 1}')
               localStorage.setItem("units", JSON.stringify(units));
             }
           }
@@ -746,12 +745,9 @@ function update(unitIndex, levelIndex, state, complete) {
   }
   }
   localStorage.setItem("units", JSON.stringify(units));
-<<<<<<< HEAD
   if (window.location.pathname !== "/learn/") {
     window.location.href = "/learn/";
   }
-=======
->>>>>>> 57fa6153cf363e4c6fa846694384a4012da34795
 // ======
 function addEvent() {
   // Lấy tất cả các level-btn có trạng thái unlock
@@ -809,28 +805,6 @@ function resetProgress() {
 
 function unlockAllUnits() {
   console.log("Before unlockAllUnits:", JSON.parse(localStorage.getItem("units")));
-<<<<<<< HEAD
-  units.forEach((unit) => {
-    unit.levels.forEach((level) => {
-      level.state = "unlock";
-      level.complete = "false";
-    });
-  });
-  window.location.href = "/learn/";
-  localStorage.setItem("units", JSON.stringify(units));
-  console.log("After unlockAllUnits:", JSON.parse(localStorage.getItem("units")));
-}
-
-function unlockAllUnits() {
-  console.log("Before unlockAllUnits:", JSON.parse(localStorage.getItem("units")));
-  units.forEach((unit) => {
-    unit.levels.forEach((level) => {
-      level.state = "unlock";
-      level.complete = "false";
-    });
-  });
-  window.location.href = "/learn/";
-=======
   units = [
   {
     id: 1,
@@ -1301,8 +1275,7 @@ function unlockAllUnits() {
     ],
   },
 ];
-  window.location.href = "/math10/learn/";
->>>>>>> 57fa6153cf363e4c6fa846694384a4012da34795
+  window.location.href = "/learn/";
   localStorage.setItem("units", JSON.stringify(units));
   console.log("After unlockAllUnits:", JSON.parse(localStorage.getItem("units")));
 }
