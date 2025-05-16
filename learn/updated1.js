@@ -1,15 +1,10 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Math10</title>
-    <link rel="stylesheet" href="../../../styles/style.css">
+const fs = require('fs');
+const path = require('path');
 
-<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+const ROOT_DIR = path.join(__dirname, 'unit');
 
-
-      <style>
+// === CSS bạn muốn thay ===
+const newCSS = `<style>
   #result-detail {
     background-color: #fff;
     padding: 30px;
@@ -138,30 +133,35 @@
     font-weight: 600;
     margin-bottom: 8px;
   }
-</style>
-</head>
-<body>
+</style>`;
 
-    <div id="result-overlay" style="display: none">
-      <div id="result-detail"></div>
-    </div>
-    <div class="top-section">
-        <a class="exit-btn" href="../../../../">X</a>
-        <div class="progress-container">
-            <div class="progress-bar"></div>
-        </div>
-    </div>
-    <div class="content">
-        <div class="question"></div>
-        <div class="options-container">
-    
-        </div>
-        <div class="explain"></div>
-    </div>
-    <div class="bottom-section">
-        <div class="check-btn">Kiểm tra</div>
-        <div class="continue-btn">Tiếp tục</div>
-    </div>
-    <script type="module" src="U26L1.js"></script>
-</body>
-</html>
+
+function replaceCSS(filepath) {
+  let content = fs.readFileSync(filepath, 'utf8');
+  const styleRegex = /<style[\s\S]*?<\/style>/;
+  if (!styleRegex.test(content)) {
+    console.warn(`⚠️ Không tìm thấy <style> trong ${filepath}`);
+    return;
+  }
+  content = content.replace(styleRegex, newCSS);
+  fs.writeFileSync(filepath, content, 'utf8');
+  console.log(`🎨 CSS updated: ${filepath}`);
+}
+
+function traverseAll() {
+  const units = fs.readdirSync(ROOT_DIR).filter(name => !name.startsWith('.'));
+  for (const unit of units) {
+    const levelDir = path.join(ROOT_DIR, unit, 'level');
+    if (!fs.existsSync(levelDir)) continue;
+
+    const levels = fs.readdirSync(levelDir);
+    for (const level of levels) {
+      const folder = path.join(levelDir, level);
+      const htmlPath = path.join(folder, 'index.html');
+
+      if (fs.existsSync(htmlPath)) replaceCSS(htmlPath);
+    }
+  }
+}
+
+traverseAll();

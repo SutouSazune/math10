@@ -90,21 +90,48 @@ const questionLinks = [
 
 function displayQuestion() {
   if (lesson.length === 0) {
-  document.getElementById('result-overlay').style.display = 'flex';
+    document.getElementById('result-overlay').style.display = 'flex';
     let units = JSON.parse(localStorage.getItem('units'));
     const { unit, level } = getUnitAndLevel();
     units[0].levels[1].state = 'unlock';
     localStorage.setItem('units', JSON.stringify(units));
-    
-    // Hiển thị bảng chi tiết kết quả
-    let detailHTML = `<h2>Kết quả bài học</h2>`;
-    detailHTML += `<p><strong>Điểm của bạn: ${point} / ${maxPoint}</strong></p>`;
 
-    detailHTML += `<h3>Tần suất sai từng câu:</h3><ul>`;
+    const totalWrong = wrongCount.reduce((sum, val) => sum + val, 0);
+    let rank = 'S';
+    let rankclass = 'S';
+    if (totalWrong >= 1) rank = 'A+';
+    if (totalWrong >= 2) rank = 'A';
+    if (totalWrong >= 4) rank = 'B+';
+    if (totalWrong >= 6) rank = 'B';
+    if (totalWrong >= 8) rank = 'C+';
+    if (totalWrong >= 10) rank = 'C';
+    if (totalWrong >= 12) rank = 'F';
+    if (rank === 'S') rankclass = 'S';
+    if (rank === 'A+') rankclass = 'Aplus';
+    if (rank === 'A') rankclass = 'A';
+    if (rank === 'B+') rankclass = 'Bplus';
+    if (rank === 'B') rankclass = 'B';
+    if (rank === 'C+') rankclass = 'Cplus';
+    if (rank === 'C') rankclass = 'C';
+    if (rank === 'F') rankclass = 'F';
+
+    let detailHTML = `<h2>Kết quả bài học</h2>`;
+    detailHTML += `
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+        <p style="margin: 0;"><strong>Điểm của bạn: ${point} / ${maxPoint}</strong></p>
+        <div class="rank-large rank-${rankclass}" title="Xếp hạng của bạn">${rank}</div>
+      </div>`;
+
+    detailHTML += `<p>Bạn đã làm sai tổng cộng <strong>${totalWrong}</strong> lần.</p>`;
+
+    detailHTML += `
+      <details>
+        <summary><strong>Chi tiết số lần sai từng câu</strong></summary>
+        <ul>`;
     questions.forEach((q, i) => {
       detailHTML += `<li>Câu ${i + 1}: sai ${wrongCount[i]} lần</li>`;
     });
-    detailHTML += `</ul>`;
+    detailHTML += `</ul></details>`;
 
     detailHTML += `<h3>Bài học cần ôn tập:</h3><ul>`;
     wrongCount.forEach((count, i) => {
@@ -123,21 +150,19 @@ function displayQuestion() {
       document.location.href = `../../../../?unit${unit}-level${level}=complete`;
     }
 
-    return; // dừng hiển thị câu hỏi tiếp
+    return;
   }
 
   const { question, answers, explain } = lesson[0];
   const correctAnswer = answers[0];
   const shuffledAnswers = [...answers].sort(() => Math.random() - 0.5);
 
-  // DOM elements
   const questionElement = document.querySelector('.question');
   const optionsContainer = document.querySelector('.options-container');
   const explainElement = document.querySelector('.explain');
   const checkButton = document.querySelector('.check-btn');
   const continueButton = document.querySelector('.continue-btn');
 
-  // Reset UI
   questionElement.innerHTML = question;
   optionsContainer.innerHTML = '';
   explainElement.innerHTML = '';
@@ -145,7 +170,6 @@ function displayQuestion() {
 
   let selectedOption = null;
 
-  // Render options
   shuffledAnswers.forEach(answer => {
     const option = document.createElement('div');
     option.className = 'option';
@@ -163,7 +187,6 @@ function displayQuestion() {
 
   loadMathJax().then(() => MathJax.typesetPromise([questionElement, optionsContainer]));
 
-  // Setup event "Check"
   checkButton.replaceWith(checkButton.cloneNode(true));
   const newCheckButton = document.querySelector('.check-btn');
 
@@ -183,7 +206,6 @@ function displayQuestion() {
       updateProgressBar(point, maxPoint);
       explainElement.innerHTML = explain;
     } else {
-      // Tăng số lần sai câu này
       const currentQuestionIndex = questions.findIndex(q => q.question === lesson[0].question);
       if (currentQuestionIndex !== -1) {
         wrongCount[currentQuestionIndex]++;
@@ -193,7 +215,6 @@ function displayQuestion() {
       explainElement.innerHTML = `<p class="highlight red">Đáp án sai, thử lại sau nhé!</p>`;
     }
 
-    // Phát âm thanh
     const audio = new Audio(`../../../../assets/sounds/${isCorrect}.mp3`);
     audio.play();
 
@@ -201,7 +222,6 @@ function displayQuestion() {
       option.style.pointerEvents = 'none';
     });
     newCheckButton.style.pointerEvents = 'none';
-
     continueButton.classList.remove('hide');
 
     loadMathJax().then(() => MathJax.typesetPromise([explainElement]));
