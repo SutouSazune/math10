@@ -478,7 +478,7 @@ console.log("Data from localStorage:", localStorage.getItem("units"));
 function resetDatabase() {
   localStorage.removeItem("units");
   localStorage.setItem("units", JSON.stringify(units));
-  window.location.href = "/math10/learn/";
+  window.location.href = "../learn/";
 }
 
 function getUniqueCategories(units) {
@@ -745,8 +745,8 @@ function update(unitIndex, levelIndex, state, complete) {
   }
   }
   localStorage.setItem("units", JSON.stringify(units));
-  if (window.location.pathname !== "/math10/learn/") {
-    window.location.href = "/math10/learn/";
+  if (window.location.pathname !== "../learn/") {
+    window.location.href = "../learn/";
   }
 // ======
 function addEvent() {
@@ -798,7 +798,7 @@ function resetProgress() {
       level.complete = "false";
     });
   });
-  window.location.href = "/math10/learn/";
+  window.location.href = "../learn/";
   localStorage.setItem("units", JSON.stringify(units));
   console.log("After resetProgress:", JSON.parse(localStorage.getItem("units")));
 }
@@ -1275,7 +1275,7 @@ function unlockAllUnits() {
     ],
   },
 ];
-  window.location.href = "/math10/learn/";
+  window.location.href = "../learn/";
   localStorage.setItem("units", JSON.stringify(units));
   console.log("After unlockAllUnits:", JSON.parse(localStorage.getItem("units")));
 }
@@ -1288,7 +1288,7 @@ function safeSetUnits(newUnits) {
   } else {
     console.log("No changes detected in units. Skipping update.");
   }
-  window.location.href = "/math10/learn/";
+  window.location.href = "../learn/";
 }
 
 function saveScrollPosition() {
