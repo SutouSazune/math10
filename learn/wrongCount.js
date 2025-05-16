@@ -1,70 +1,10 @@
+const fs = require('fs');
+const path = require('path');
 
-const loadMathJax = () => {
-  if (window.MathJax) return Promise.resolve();
-  return new Promise((resolve) => {
-    const script = document.createElement('script');
-    script.src = "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js";
-    script.async = true;
-    script.onload = () => {
-      console.log('MathJax loaded');
-      resolve();
-    };
-    document.head.appendChild(script);
-  });
-};
+const rootDir = path.join(__dirname, 'unit');
 
-import { updateProgressBar, fraction, sqrt } from "../../../../utils/util.js";
-
-const questions = [
-    {
-        question: `
-            Số đo cung chắn nửa đường tròn bằng
-        `,
-        answers: [
-            `180⁰`,
-            `90⁰`,
-            `60⁰`,
-            `135⁰`,
-        ],
-        explain: `
-            - Nửa đường tròn có góc chính là 180⁰, vì đường tròn có tổng số đo cung là 360⁰.
-        `
-    }, {
-        question: `
-            Cung của góc vuông trong đường tròn có số đo bằng
-        `,
-        answers: [
-            `90⁰`,
-            `180⁰`,
-            `45⁰`,
-            `60⁰`,
-        ],
-        explain: `
-            - Cung của góc vuông trong đường tròn có số đo bằng 90⁰, vì góc vuông có số đo 90⁰.
-        `
-    }    
-];
-
-const maxPoint = questions.length;
-let point = 0;
-let lesson = [...questions];
-//mod
-function getUnitAndLevel() {
-    const pathParts = window.location.pathname.split('/');
-    const unitIndex = pathParts.indexOf('unit');
-    const levelIndex = pathParts.indexOf('level');
-
-    if (unitIndex !== -1 && levelIndex !== -1) {
-        const unit = parseInt(pathParts[unitIndex + 1], 10); // Get the unit number
-        const level = parseInt(pathParts[levelIndex + 1], 10); // Get the level number
-        return { unit, level };
-    }
-
-    return { unit: null, level: null }; // Return null if not found
-}
-//---
-
-const wrongCount = new Array(questions.length).fill(0);
+// Đoạn code thay thế nguyên bản bạn cho (copy paste đúng đoạn bạn cung cấp)
+const replacementCode = `const wrongCount = new Array(questions.length).fill(0);
 
 // Bạn thay link tương ứng bài học ở đây nhé
 const questionLinks = [
@@ -82,29 +22,28 @@ const questionLinks = [
 
 function displayQuestion() {
   if (lesson.length === 0) {
-  document.getElementById('result-overlay').style.display = 'flex';
     let units = JSON.parse(localStorage.getItem('units'));
     const { unit, level } = getUnitAndLevel();
     units[0].levels[1].state = 'unlock';
     localStorage.setItem('units', JSON.stringify(units));
     
     // Hiển thị bảng chi tiết kết quả
-    let detailHTML = `<h2>Kết quả bài học</h2>`;
-    detailHTML += `<p><strong>Điểm của bạn: ${point} / ${maxPoint}</strong></p>`;
+    let detailHTML = \`<h2>Kết quả bài học</h2>\`;
+    detailHTML += \`<p><strong>Điểm của bạn: \${point} / \${maxPoint}</strong></p>\`;
 
-    detailHTML += `<h3>Tần suất sai từng câu:</h3><ul>`;
+    detailHTML += \`<h3>Tần suất sai từng câu:</h3><ul>\`;
     questions.forEach((q, i) => {
-      detailHTML += `<li>Câu ${i + 1}: sai ${wrongCount[i]} lần</li>`;
+      detailHTML += \`<li>Câu \${i + 1}: sai \${wrongCount[i]} lần</li>\`;
     });
-    detailHTML += `</ul>`;
+    detailHTML += \`</ul>\`;
 
-    detailHTML += `<h3>Bài học cần ôn tập:</h3><ul>`;
+    detailHTML += \`<h3>Bài học cần ôn tập:</h3><ul>\`;
     wrongCount.forEach((count, i) => {
       if (count > 0) {
-        detailHTML += `<li><a href="${questionLinks[i]}" target="_blank">Ôn bài cho câu ${i + 1}</a> (sai ${count} lần)</li>`;
+        detailHTML += \`<li><a href="\${questionLinks[i]}" target="_blank">Ôn bài cho câu \${i + 1}</a> (sai \${count} lần)</li>\`;
       }
     });
-    detailHTML += `</ul>`;
+    detailHTML += \`</ul>\`;
 
     const container = document.getElementById('result-detail');
     if (container) {
@@ -112,7 +51,7 @@ function displayQuestion() {
       container.scrollIntoView({ behavior: 'smooth' });
     } else {
       alert("Bạn đã hoàn thành tất cả câu hỏi!");
-      document.location.href = `../../../../?unit${unit}-level${level}=complete`;
+      document.location.href = \`../../../../?unit\${unit}-level\${level}=complete\`;
     }
 
     return; // dừng hiển thị câu hỏi tiếp
@@ -142,7 +81,6 @@ function displayQuestion() {
     const option = document.createElement('div');
     option.className = 'option';
     option.innerHTML = answer;
-    option.dataset.answer = answer;
     option.addEventListener('click', () => {
       if (selectedOption) {
         selectedOption.classList.remove('selected');
@@ -182,11 +120,11 @@ function displayQuestion() {
       }
       const currentQuestion = lesson.shift();
       lesson.push(currentQuestion);
-      explainElement.innerHTML = `<p class="highlight red">Đáp án sai, thử lại sau nhé!</p>`;
+      explainElement.innerHTML = \`<p class="highlight red">Đáp án sai, thử lại sau nhé!</p>\`;
     }
 
     // Phát âm thanh
-    const audio = new Audio(`../../../../assets/sounds/${isCorrect}.mp3`);
+    const audio = new Audio(\`../../../../assets/sounds/\${isCorrect}.mp3\`);
     audio.play();
 
     optionsContainer.querySelectorAll('.option').forEach(option => {
@@ -199,14 +137,60 @@ function displayQuestion() {
     loadMathJax().then(() => MathJax.typesetPromise([explainElement]));
   });
 }
+`;
 
+function processFiles() {
+  fs.readdir(rootDir, (err, units) => {
+    if (err) {
+      console.error('Không thể đọc thư mục unit:', err);
+      return;
+    }
+    units.forEach(unit => {
+      const levelPath = path.join(rootDir, unit, 'level');
+      fs.readdir(levelPath, (err2, levels) => {
+        if (err2) {
+          // Không có folder level hoặc lỗi, bỏ qua
+          return;
+        }
+        levels.forEach(level => {
+          const fileName = `U${unit}L${level}.js`;
+          const filePath = path.join(levelPath, level, fileName);
 
+          fs.access(filePath, fs.constants.F_OK, (err3) => {
+            if (err3) {
+              // File không tồn tại, bỏ qua
+              return;
+            }
 
-function setContinueButton() {
-    const continueButton = document.querySelector('.continue-btn');
-    continueButton.addEventListener('click', displayQuestion);
+            fs.readFile(filePath, 'utf8', (err4, data) => {
+              if (err4) {
+                console.error('Lỗi đọc file', filePath, err4);
+                return;
+              }
+
+              // Regex bắt toàn bộ hàm displayQuestion
+              const displayQuestionRegex = /function displayQuestion\s*\([^)]*\)\s*\{[\s\S]*?\n\}/m;
+
+              if (!displayQuestionRegex.test(data)) {
+                console.warn(`Không tìm thấy hàm displayQuestion trong file ${filePath}`);
+                return;
+              }
+
+              const newData = data.replace(displayQuestionRegex, replacementCode);
+
+              fs.writeFile(filePath, newData, 'utf8', err5 => {
+                if (err5) {
+                  console.error('Lỗi ghi file', filePath, err5);
+                } else {
+                  console.log(`Đã cập nhật file: ${filePath}`);
+                }
+              });
+            });
+          });
+        });
+      });
+    });
+  });
 }
 
-// Initialize quiz
-setContinueButton();
-displayQuestion();
+processFiles();

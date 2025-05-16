@@ -21,7 +21,7 @@ const questions = [
             "\\(ax + by = c\\)",
             "ax² + by = c",
             "0x + 0y = c",
-                "\\( ax + b \\sqrt{y} = c \\)"
+            "\\( ax + b \\sqrt{y} = c \\)"
         ],
         explain: `
             Phương trình bậc nhất hai ẩn x và y là hệ thức dạng<br>
@@ -150,15 +150,58 @@ function getUnitAndLevel() {
     return { unit: null, level: null };
 }
 
+const wrongCount = new Array(questions.length).fill(0);
+
+// Bạn thay link tương ứng bài học ở đây nhé
+const questionLinks = [
+  "/lesson/unit1/level1",
+  "/lesson/unit1/level1",
+  "/lesson/unit1/level2",
+  "/lesson/unit1/level2",
+  "/lesson/unit1/level3",
+  "/lesson/unit1/level3",
+  "/lesson/unit1/level4",
+  "/lesson/unit1/level4",
+  "/lesson/unit1/level5",
+  "/lesson/unit1/level5"
+];
+
 function displayQuestion() {
   if (lesson.length === 0) {
+    document.getElementById('result-overlay').style.display = 'flex';
     let units = JSON.parse(localStorage.getItem('units'));
     const { unit, level } = getUnitAndLevel();
     units[0].levels[1].state = 'unlock';
     localStorage.setItem('units', JSON.stringify(units));
-    alert("Bạn đã hoàn thành tất cả câu hỏi!");
-    document.location.href = `../../../../?unit${unit}-level${level}=complete`;
-    return; // cần return để không chạy tiếp
+    
+    // Hiển thị bảng chi tiết kết quả
+    let detailHTML = `<h2>Kết quả bài học</h2>`;
+    detailHTML += `<p><strong>Điểm của bạn: ${point} / ${maxPoint}</strong></p>`;
+
+    detailHTML += `<h3>Tần suất sai từng câu:</h3><ul>`;
+    questions.forEach((q, i) => {
+      detailHTML += `<li>Câu ${i + 1}: sai ${wrongCount[i]} lần</li>`;
+    });
+    detailHTML += `</ul>`;
+
+    detailHTML += `<h3>Bài học cần ôn tập:</h3><ul>`;
+    wrongCount.forEach((count, i) => {
+      if (count > 0) {
+        detailHTML += `<li><a href="${questionLinks[i]}" target="_blank">Ôn bài cho câu ${i + 1}</a> (sai ${count} lần)</li>`;
+      }
+    });
+    detailHTML += `</ul>`;
+
+    const container = document.getElementById('result-detail');
+    if (container) {
+      container.innerHTML = detailHTML;
+      container.scrollIntoView({ behavior: 'smooth' });
+    } else {
+      alert("Bạn đã hoàn thành tất cả câu hỏi!");
+      document.location.href = `../../../../?unit${unit}-level${level}=complete`;
+    }
+
+    return; // dừng hiển thị câu hỏi tiếp
   }
 
   const { question, answers, explain } = lesson[0];
@@ -184,7 +227,8 @@ function displayQuestion() {
   shuffledAnswers.forEach(answer => {
     const option = document.createElement('div');
     option.className = 'option';
-    option.innerHTML = answer; // innerHTML để giữ latex
+    option.innerHTML = answer;
+    option.dataset.answer = answer;
     option.addEventListener('click', () => {
       if (selectedOption) {
         selectedOption.classList.remove('selected');
@@ -195,7 +239,6 @@ function displayQuestion() {
     optionsContainer.appendChild(option);
   });
 
-  // Render MathJax cho câu hỏi và đáp án
   loadMathJax().then(() => MathJax.typesetPromise([questionElement, optionsContainer]));
 
   // Setup event "Check"
@@ -209,7 +252,7 @@ function displayQuestion() {
       return;
     }
 
-    const isCorrect = selectedOption.innerHTML === correctAnswer;
+    const isCorrect = selectedOption.dataset.answer === correctAnswer;
     selectedOption.classList.add(isCorrect ? 'correct' : 'wrong');
 
     if (isCorrect) {
@@ -218,6 +261,11 @@ function displayQuestion() {
       updateProgressBar(point, maxPoint);
       explainElement.innerHTML = explain;
     } else {
+      // Tăng số lần sai câu này
+      const currentQuestionIndex = questions.findIndex(q => q.question === lesson[0].question);
+      if (currentQuestionIndex !== -1) {
+        wrongCount[currentQuestionIndex]++;
+      }
       const currentQuestion = lesson.shift();
       lesson.push(currentQuestion);
       explainElement.innerHTML = `<p class="highlight red">Đáp án sai, thử lại sau nhé!</p>`;
@@ -227,19 +275,19 @@ function displayQuestion() {
     const audio = new Audio(`../../../../assets/sounds/${isCorrect}.mp3`);
     audio.play();
 
-    // Disable options và nút check
     optionsContainer.querySelectorAll('.option').forEach(option => {
       option.style.pointerEvents = 'none';
     });
     newCheckButton.style.pointerEvents = 'none';
 
-    // Hiện nút tiếp tục
     continueButton.classList.remove('hide');
 
-    // Render MathJax cho phần giải thích
     loadMathJax().then(() => MathJax.typesetPromise([explainElement]));
   });
 }
+
+
+
 
 function setContinueButton() {
     const continueButton = document.querySelector('.continue-btn');
