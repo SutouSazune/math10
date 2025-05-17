@@ -147,7 +147,11 @@ function displayQuestion() {
         detailHTML += `<li><a href="${questionLinks[i]}" target="_blank">Ôn bài cho câu ${i + 1}</a> (sai ${count} lần)</li>`;
       }
     });
-    detailHTML += `</ul>`;
+    detailHTML += `
+  <div class="back-button-container">
+    <button onclick="window.location.href='../../../../index.html'">← Quay về</button>
+  </div>
+</ul>`;
 
     const container = document.getElementById('result-detail');
     if (container) {

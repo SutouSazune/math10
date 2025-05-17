@@ -1,10 +1,9 @@
 const fs = require('fs');
 const path = require('path');
 
-const ROOT_DIR = path.join(__dirname, 'unit');
-
-// === CSS bạn muốn thay ===
-const newCSS = `<style>
+// CSS mới
+const newStyleBlock = `
+<style>
   #result-detail {
     background-color: #fff;
     padding: 30px;
@@ -17,6 +16,7 @@ const newCSS = `<style>
     font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
     color: #333;
     margin: 20px auto;
+    position: relative;
   }
 
   #result-detail h2 {
@@ -133,35 +133,87 @@ const newCSS = `<style>
     font-weight: 600;
     margin-bottom: 8px;
   }
-</style>`;
 
-
-function replaceCSS(filepath) {
-  let content = fs.readFileSync(filepath, 'utf8');
-  const styleRegex = /<style[\s\S]*?<\/style>/;
-  if (!styleRegex.test(content)) {
-    console.warn(`⚠️ Không tìm thấy <style> trong ${filepath}`);
-    return;
+  .back-button-container {
+    position: absolute;
+    bottom: 20px;
+    right: 30px;
   }
-  content = content.replace(styleRegex, newCSS);
-  fs.writeFileSync(filepath, content, 'utf8');
-  console.log(`🎨 CSS updated: ${filepath}`);
-}
 
-function traverseAll() {
-  const units = fs.readdirSync(ROOT_DIR).filter(name => !name.startsWith('.'));
-  for (const unit of units) {
-    const levelDir = path.join(ROOT_DIR, unit, 'level');
-    if (!fs.existsSync(levelDir)) continue;
+  .back-button-container button {
+    background-color: #3498db;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1.1em;
+    font-weight: bold;
+    border-radius: 6px;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    transition: background-color 0.3s ease;
+  }
 
-    const levels = fs.readdirSync(levelDir);
-    for (const level of levels) {
-      const folder = path.join(levelDir, level);
-      const htmlPath = path.join(folder, 'index.html');
+  .back-button-container button:hover {
+    background-color: #2980b9;
+  }
+</style>
+`;
 
-      if (fs.existsSync(htmlPath)) replaceCSS(htmlPath);
+// Nút quay về
+const backButtonHTML = `
+  <div class="back-button-container">
+    <button onclick="window.location.href='../../../../index.html'">← Quay về</button>
+  </div>
+`;
+
+// Duyệt đệ quy qua thư mục
+function processLevelDir(levelPath, unitNum, levelNum) {
+  const htmlPath = path.join(levelPath, 'index.html');
+  const jsPath = path.join(levelPath, `U${unitNum}L${levelNum}.js`);
+
+  // Chỉnh HTML
+  if (fs.existsSync(htmlPath)) {
+    let htmlContent = fs.readFileSync(htmlPath, 'utf-8');
+    htmlContent = htmlContent.replace(/<style>[\s\S]*?<\/style>/, newStyleBlock);
+    fs.writeFileSync(htmlPath, htmlContent, 'utf-8');
+    console.log(`✅ Updated: ${htmlPath}`);
+  }
+
+  // Chỉnh JS
+  if (fs.existsSync(jsPath)) {
+    let jsContent = fs.readFileSync(jsPath, 'utf-8');
+
+    // Chèn nút nếu chưa có
+    if (!jsContent.includes('← Quay về')) {
+      const lastDetail = jsContent.lastIndexOf('detailHTML +=');
+      const insertIndex = jsContent.indexOf('`', lastDetail);
+      const before = jsContent.slice(0, insertIndex + 1);
+      const after = jsContent.slice(insertIndex + 1);
+      jsContent = before + backButtonHTML + after;
+      fs.writeFileSync(jsPath, jsContent, 'utf-8');
+      console.log(`✅ Updated: ${jsPath}`);
     }
   }
 }
 
-traverseAll();
+// Duyệt qua tất cả unit
+function walkUnits(baseDir) {
+  const unitDirs = fs.readdirSync(baseDir);
+  for (const unitName of unitDirs) {
+    const unitPath = path.join(baseDir, unitName);
+    const levelPath = path.join(unitPath, 'level');
+
+    if (fs.existsSync(levelPath)) {
+      const levels = fs.readdirSync(levelPath);
+      for (const levelName of levels) {
+        const fullLevelPath = path.join(levelPath, levelName);
+        if (fs.statSync(fullLevelPath).isDirectory()) {
+          processLevelDir(fullLevelPath, unitName, levelName);
+        }
+      }
+    }
+  }
+}
+
+// Run script
+walkUnits(path.join(__dirname, 'unit'));
