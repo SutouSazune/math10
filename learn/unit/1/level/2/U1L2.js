@@ -1,4 +1,23 @@
 
+function unlockUnitLevel(unit, level) {
+  let unlocked = localStorage.getItem('unlockedUnitLevels');
+  unlocked = unlocked ? JSON.parse(unlocked) : {};
+
+  if (!unlocked[unit]) {
+    unlocked[unit] = [];
+  }
+
+  if (!unlocked[unit].includes(level)) {
+    unlocked[unit].push(level);
+    unlocked[unit].sort((a,b) => a-b);
+  }
+
+  localStorage.setItem('unlockedUnitLevels', JSON.stringify(unlocked));
+  console.log(`Đã mở khóa Unit ${unit} Level ${level}`);
+}
+
+
+
 const loadMathJax = () => {
   if (window.MathJax) return Promise.resolve();
   return new Promise((resolve) => {
@@ -286,34 +305,26 @@ function displayQuestion() {
     if (rank === 'F') rankclass = 'F';
 
     let detailHTML = `<h2>Kết quả bài học</h2>`;
-    detailHTML += `
-      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
-        <p style="margin: 0;"><strong>Điểm của bạn: ${point} / ${maxPoint}</strong></p>
-        <div class="rank-large rank-${rankclass}" title="Xếp hạng của bạn">${rank}</div>
-      </div>`;
-
-    detailHTML += `<p>Bạn đã làm sai tổng cộng <strong>${totalWrong}</strong> lần.</p>`;
-
-    detailHTML += `
-      <details>
-        <summary><strong>Chi tiết số lần sai từng câu</strong></summary>
-        <ul>`;
-    questions.forEach((q, i) => {
-      detailHTML += `<li>Câu ${i + 1}: sai ${wrongCount[i]} lần</li>`;
-    });
-    detailHTML += `</ul></details>`;
-
-    detailHTML += `<h3>Bài học cần ôn tập:</h3><ul>`;
-    wrongCount.forEach((count, i) => {
-      if (count > 0) {
-        detailHTML += `<li><a href="${questionLinks[i]}" target="_blank">Ôn bài cho câu ${i + 1}</a> (sai ${count} lần)</li>`;
-      }
-    });
-    detailHTML += `
-  <div class="back-button-container">
-    <button onclick="window.location.href='../../../../index.html'">← Quay về</button>
-  </div>
-</ul>`;
+      detailHTML += `
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+          <p style="margin: 0;"><strong>Điểm của bạn: ${point} / ${maxPoint}</strong></p>
+          <div class="rank-large rank-${rankclass}">${rank}</div>
+        </div>
+        <p>Bạn đã làm sai tổng cộng <strong>${totalWrong}</strong> lần.</p>
+        <details><summary><strong>Chi tiết số lần sai từng câu</strong></summary><ul>`;
+      questions.forEach((_, i) => {
+        detailHTML += `<li>Câu ${i + 1}: sai ${wrongCount[i]} lần</li>`;
+      });
+      detailHTML += `</ul></details><h3>Bài học cần ôn tập:</h3><ul>`;
+      wrongCount.forEach((count, i) => {
+        if (count > 0) {
+          detailHTML += `<li><a href="${questionLinks[i]}" target="_blank">Ôn bài câu ${i + 1}</a> (sai ${count} lần)</li>`;
+        }
+      });
+      detailHTML += `
+<div class="back-button-container">
+    <button onclick="handleBackButtonClick()">← Quay về</button>
+</div>`;
 
     const container = document.getElementById('result-detail');
     if (container) {
@@ -412,3 +423,19 @@ function setContinueButton() {
 // Initialize quiz
 setContinueButton();
 displayQuestion();
+
+
+function handleBackButtonClick() {
+  const pathParts = window.location.pathname.split('/');
+  const unitIndex = pathParts.indexOf('unit');
+  const levelIndex = pathParts.indexOf('level');
+
+  if (unitIndex !== -1 && levelIndex !== -1) {
+    const unit = parseInt(pathParts[unitIndex + 1], 10);
+    const level = parseInt(pathParts[levelIndex + 1], 10);
+    unlockUnitLevel(unit, level + 1);
+    window.location.href = '../../../../?unit' + unit + '-level' + level + '=complete';
+  } else {
+    window.location.href = '../../../../index.html';
+  }
+}
