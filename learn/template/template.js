@@ -15,23 +15,6 @@ window.handleBackButtonClick = function() {
   }
 };
 
-function unlockUnitLevel(unit, level) {
-  let unlocked = localStorage.getItem('unlockedUnitLevels');
-  unlocked = unlocked ? JSON.parse(unlocked) : {};
-
-  if (!unlocked[unit]) {
-    unlocked[unit] = [];
-  }
-
-  if (!unlocked[unit].includes(level)) {
-    unlocked[unit].push(level);
-    unlocked[unit].sort((a,b) => a-b);
-  }
-
-  localStorage.setItem('unlockedUnitLevels', JSON.stringify(unlocked));
-  console.log(`Đã mở khóa Unit ${unit} Level ${level}`);
-};
-
 // Hàm load MathJax khi có công thức toán
 const loadMathJax = () => {
   if (window.MathJax) return Promise.resolve();

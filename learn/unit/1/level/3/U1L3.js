@@ -325,7 +325,7 @@ displayQuestion();
 
 
 
-function handleBackButtonClick() {
+window.handleBackButtonClick = function() {
   const pathParts = window.location.pathname.split('/');
   const unitIndex = pathParts.indexOf('unit');
   const levelIndex = pathParts.indexOf('level');
@@ -338,4 +338,5 @@ function handleBackButtonClick() {
   } else {
     window.location.href = '../../../../index.html';
   }
-}
+};
+
