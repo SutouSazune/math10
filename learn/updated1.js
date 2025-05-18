@@ -1,73 +1,52 @@
-const fs = require('fs');
-const path = require('path');
+const fs = require("fs");
+const path = require("path");
 
-// Hàm unlockUnitLevel mới
-const newUnlockUnitLevel = `
-function unlockUnitLevel(unit, level) {
-  // Cập nhật unlockedUnitLevels
-  let unlocked = localStorage.getItem('unlockedUnitLevels');
-  unlocked = unlocked ? JSON.parse(unlocked) : {};
+const targetDir = path.resolve(__dirname, "unit"); // thư mục unit, thay đổi nếu cần
+const scriptLine = '<script src="../../../../template/calculator_notepad.js"></script>\n';
 
-  if (!unlocked[unit]) {
-    unlocked[unit] = [];
-  }
-
-  if (!unlocked[unit].includes(level)) {
-    unlocked[unit].push(level);
-    unlocked[unit].sort((a, b) => a - b);
-  }
-
-  localStorage.setItem('unlockedUnitLevels', JSON.stringify(unlocked));
-  console.log(\`Đã mở khóa Unit \${unit} Level \${level}\`);
-
-  // Cập nhật luôn cho units (giảm 1 level)
-  let units = JSON.parse(localStorage.getItem('units'));
-  if (
-    units &&
-    units[unit - 1] &&
-    units[unit - 1].levels &&
-    units[unit - 1].levels[level - 1]
-  ) {
-    units[unit - 1].levels[level - 1].state = 'unlock';
-    localStorage.setItem('units', JSON.stringify(units));
-    console.log(\`Đã cập nhật units[\${unit - 1}].levels[\${level - 1}].state = 'unlock'\`);
-  }
-}
-`;
-
-// Hàm tìm và thay thế trong file
-function processFile(filePath) {
-  let content = fs.readFileSync(filePath, 'utf8');
-
-  // Thay thế hàm unlockUnitLevel cũ bằng hàm mới
-  content = content.replace(
-    /function unlockUnitLevel\s*\([\s\S]*?\}\n\}/g,
-    newUnlockUnitLevel.trim()
-  );
-
-  // Xóa các dòng units[...].levels[...].state = "unlock";
-  content = content.replace(
-    /units\s*\[\s*\d+\s*\]\.levels\s*\[\s*\d+\s*\]\.state\s*=\s*['"]unlock['"];\s*\n?/g,
-    ''
-  );
-
-  fs.writeFileSync(filePath, content, 'utf8');
-}
-
-// Đệ quy tìm tất cả file .js trong thư mục unit
-function processDir(dir) {
-  fs.readdirSync(dir).forEach(file => {
-    const fullPath = path.join(dir, file);
-    if (fs.statSync(fullPath).isDirectory()) {
-      processDir(fullPath);
-    } else if (file.endsWith('.js')) {
-      processFile(fullPath);
+// Hàm đọc đệ quy và lấy danh sách file .html
+function getAllHtmlFiles(dir) {
+  let results = [];
+  const list = fs.readdirSync(dir, { withFileTypes: true });
+  for (const file of list) {
+    const fullPath = path.join(dir, file.name);
+    if (file.isDirectory()) {
+      results = results.concat(getAllHtmlFiles(fullPath));
+    } else if (file.isFile() && fullPath.endsWith(".html")) {
+      results.push(fullPath);
     }
-  });
+  }
+  return results;
 }
 
-// Đường dẫn thư mục unit
-const unitDir = path.join(__dirname, 'unit');
-processDir(unitDir);
+// Hàm thêm scriptLine trước </body> nếu chưa có
+function addScriptToFile(filePath) {
+  let content = fs.readFileSync(filePath, "utf-8");
 
-console.log('Đã thay thế hàm unlockUnitLevel và xóa các dòng unlock trực tiếp trong thư mục unit!');
+  if (content.includes(scriptLine.trim())) {
+    console.log(`Đã có script trong file: ${filePath}`);
+    return;
+  }
+
+  const bodyCloseTag = "</body>";
+  const index = content.lastIndexOf(bodyCloseTag);
+  if (index === -1) {
+    console.warn(`Không tìm thấy </body> trong file: ${filePath}`);
+    return;
+  }
+
+  // Chèn scriptLine trước </body>
+  const newContent =
+    content.slice(0, index) + scriptLine + content.slice(index);
+
+  fs.writeFileSync(filePath, newContent, "utf-8");
+  console.log(`Đã thêm script vào file: ${filePath}`);
+}
+
+// Thực thi
+const htmlFiles = getAllHtmlFiles(targetDir);
+console.log(`Tìm thấy ${htmlFiles.length} file HTML.`);
+
+for (const file of htmlFiles) {
+  addScriptToFile(file);
+}

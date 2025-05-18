@@ -25,7 +25,7 @@ function unlockUnitLevel(unit, level) {
     units_nangcao[unit - 1].levels &&
     units_nangcao[unit - 1].levels[level - 1]
   ) {
-    units[unit - 1].levels[level - 1].state = 'unlock';
+    units_nangcao[unit - 1].levels[level - 1].state = 'unlock';
     localStorage.setItem('units_nangcao', JSON.stringify(units_nangcao));
     console.log(`Đã cập nhật units_nangcao[${unit - 1}].levels[${level - 1}].state = 'unlock'`);
   }
