@@ -529,7 +529,31 @@ const uniqueCategories = getUniqueCategories(units);
 console.log("Unique Categories:", uniqueCategories); // Debug: In ra danh sách các category
 
 function displayUnits() {
-  let html = `<h1>Chinh phục toán 9 và đề thi Toán tuyển sinh vào 10</h1>`;
+  let html = `
+    <div style="display: flex; align-items: center; justify-content: space-between;">
+      <h1 style="margin: 0; font-size: 2.5rem;">Củng cố kiến thức toán 9 thi vào 10.</h1>
+      <a href="../learn_nangcao/"
+         class="btn-nangcao"
+         style="
+            margin-left: 16px;
+            padding: 12px 28px;
+            background: linear-gradient(90deg,rgb(255, 7, 7),rgb(246, 66, 66));
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(255, 0, 0, 0.4);
+            font-weight: bold;
+            transition: transform 0.3s, box-shadow 0.3s;
+            text-decoration: none;
+            color: #fff;
+            font-size: 1.35rem;
+            letter-spacing: 0.5px;
+         "
+         onmouseover="this.style.transform='scale(1.07)';this.style.boxShadow='0 8px 20px rgba(255,193,7,0.5)';"
+         onmouseout="this.style.transform='none';this.style.boxShadow='0 4px 12px rgba(255,193,7,0.4)';"
+      >
+        <span style="font-size: 1.35rem; font-weight: bold;">Nâng cao</span>
+      </a>
+    </div>
+  `;
 
   const categories = getUniqueCategories(units);
   console.log("Categories:", categories); // Debug
@@ -590,7 +614,8 @@ function displayUnits() {
 
       const categoryUnits = category.querySelector(".category-units");
       const categoryTitle = category.querySelector(".category-title"); // Lấy tiêu đề của category
-      const title = document.querySelector("h1"); // Dòng chữ cần ẩn
+      const title = document.querySelector("h1");
+      const nut_nangcao = document.getElementsByClassName("btn-nangcao"); // Dòng chữ cần ẩn
 
       if (categoryUnits) {
         const isVisible = categoryUnits.classList.contains("show");
@@ -622,6 +647,7 @@ function displayUnits() {
             categoryTitle.style.transform = "rotate(270deg)"; // Quay tiêu đề 270 độ khi mở
           }
           title.classList.add("hidden-title"); // Ẩn dòng chữ
+          Array.from(nut_nangcao).forEach(el => el.classList.add("hidden-title")); // Ẩn dòng chữ
         } else {
           categoryUnits.classList.remove("show");
           setTimeout(() => {
@@ -636,6 +662,7 @@ function displayUnits() {
           const anyVisible = document.querySelectorAll(".category-units.show").length > 0;
           if (!anyVisible) {
             title.classList.remove("hidden-title"); // Hiển thị lại dòng chữ
+            Array.from(nut_nangcao).forEach(el => el.classList.remove("hidden-title")); // Ẩn dòng chữ
           }
         }
       }
