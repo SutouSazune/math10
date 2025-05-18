@@ -1,5 +1,5 @@
 //  JSON.parse(localStorage.getItem("units")) || 
-let units =[
+let units = JSON.parse(localStorage.getItem("units")) || [
   {
     id: 1,
     name: "Khái niệm phương trình và hệ hai phương trình bậc nhất hai ẩn",
@@ -468,18 +468,6 @@ let units =[
       { name: "Bài tập cuối chương X", state: "lock", complete: "false" },
     ],
   },
-  {
-    id: 33,
-    name: `Test`,
-    category: "Test",
-    levels: [
-      {
-        name: "Test1",
-        state: "unlock",
-        complete: "false",
-      },
-    ],
-  },
 ];
 
 console.log("Initial units from localStorage:", units);
@@ -488,7 +476,13 @@ console.log("Units data from localStorage:", JSON.parse(localStorage.getItem("un
 
 function resetDatabase() {
   localStorage.removeItem("units");
-  localStorage.setItem("units", JSON.stringify(units));
+  // Reload units from localStorage or use default if not present
+  let newUnits = JSON.parse(localStorage.getItem("units")) || units;
+  localStorage.setItem("units", JSON.stringify(newUnits));
+  // Re-render the UI if needed
+  if (typeof displayUnits === "function") {
+    displayUnits();
+  }
   window.location.href = "../learn/";
 }
 
@@ -727,14 +721,14 @@ document.addEventListener("DOMContentLoaded", () => {
           const isCompleteFromParams = params.get(paramKey) === "complete";
           const isCompleteFromStorage = level.complete === "true";
   
-          if (isCompleteFromParams || isCompleteFromStorage) {
+            if (isCompleteFromParams || isCompleteFromStorage) {
             levelElement.classList.add("complete");
             console.log(
               `Added 'complete' class to .unit${unitIndex + 1}-level${
-                levelIndex + 1
+              levelIndex + 1
               }`
             );
-  
+
             // Update localStorage if param exists
             if (isCompleteFromParams) {
               units[unitIndex].levels[levelIndex].complete = "true";
@@ -742,10 +736,17 @@ document.addEventListener("DOMContentLoaded", () => {
               `Added 'complete' class to .unit${unitIndex + 1}-level${
                 levelIndex + 1
               }`
-            );
+              );
               localStorage.setItem("units", JSON.stringify(units));
+
+              // Unlock next level if exists
+              if (units[unitIndex].levels[levelIndex + 1]) {
+              // units[unitIndex].levels[levelIndex + 1].state = "unlock";
+              // console.log(unitIndex, levelIndex + 1); 
+              localStorage.setItem("units", JSON.stringify(units));
+              }
             }
-          }
+            }
         }
       });
     });
@@ -836,6 +837,10 @@ function resetProgress() {
       level.state = "lock";
       level.complete = "false";
     });
+    // Unlock the first level of each unit
+    if (unit.levels.length > 0) {
+      unit.levels[0].state = "unlock";
+    }
   });
   window.location.href = "../learn/";
   localStorage.setItem("units", JSON.stringify(units));

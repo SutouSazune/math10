@@ -1,5 +1,36 @@
 import { updateProgressBar } from "../utils/util.js";
 
+function unlockUnitLevel(unit, level) {
+  // Cập nhật unlockedUnitLevels
+  let unlocked = localStorage.getItem('unlockedUnitLevels');
+  unlocked = unlocked ? JSON.parse(unlocked) : {};
+
+  if (!unlocked[unit]) {
+    unlocked[unit] = [];
+  }
+
+  if (!unlocked[unit].includes(level)) {
+    unlocked[unit].push(level);
+    unlocked[unit].sort((a, b) => a - b);
+  }
+
+  localStorage.setItem('unlockedUnitLevels', JSON.stringify(unlocked));
+  console.log(`Đã mở khóa Unit ${unit} Level ${level}`);
+
+  // Cập nhật luôn cho units (giảm 1 level)
+  let units_nangcao = JSON.parse(localStorage.getItem('units_nangcao'));
+  if (
+    units_nangcao &&
+    units_nangcao[unit - 1] &&
+    units_nangcao[unit - 1].levels &&
+    units_nangcao[unit - 1].levels[level - 1]
+  ) {
+    units[unit - 1].levels[level - 1].state = 'unlock';
+    localStorage.setItem('units_nangcao', JSON.stringify(units_nangcao));
+    console.log(`Đã cập nhật units_nangcao[${unit - 1}].levels[${level - 1}].state = 'unlock'`);
+  }
+};
+
 window.handleBackButtonClick = function() {
   const pathParts = window.location.pathname.split('/');
   const unitIndex = pathParts.indexOf('unit');
@@ -26,23 +57,6 @@ const loadMathJax = () => {
     document.head.appendChild(script);
   });
 };
-
-function unlockUnitLevel(unit, level) {
-  let unlocked = localStorage.getItem('unlockedUnitLevels');
-  unlocked = unlocked ? JSON.parse(unlocked) : {};
-
-  if (!unlocked[unit]) {
-    unlocked[unit] = [];
-  }
-
-  if (!unlocked[unit].includes(level)) {
-    unlocked[unit].push(level);
-    unlocked[unit].sort((a,b) => a-b);
-  }
-
-  localStorage.setItem('unlockedUnitLevels', JSON.stringify(unlocked));
-  console.log(`Đã mở khóa Unit ${unit} Level ${level}`);
-}
 
 // Hàm xử lý bài học, nhận vào danh sách câu hỏi và thông tin unit/level
 export function runLesson(questions, unit, level, questionLinks) {
@@ -130,6 +144,7 @@ export function runLesson(questions, unit, level, questionLinks) {
     checkBtn.replaceWith(checkBtn.cloneNode(true));
     const newCheckBtn = document.querySelector(".check-btn");
 
+    newCheckBtn.style.pointerEvents = "auto";
     newCheckBtn.addEventListener("click", () => {
       if (!selectedOption) return alert("Vui lòng chọn một đáp án!");
       const isCorrect = selectedOption.dataset.answer === correctAnswer;
@@ -149,8 +164,8 @@ export function runLesson(questions, unit, level, questionLinks) {
 
       const audio = new Audio(`../../../../assets/sounds/${isCorrect}.mp3`);
       audio.play();
-      optionsContainer.querySelectorAll(".option").forEach(opt => opt.style.pointerEvents = "none");
       newCheckBtn.style.pointerEvents = "none";
+      optionsContainer.querySelectorAll(".option").forEach(opt => opt.style.pointerEvents = "none");
       document.querySelector(".continue-btn").classList.remove("hide");
 
       loadMathJax().then(() => MathJax.typesetPromise());

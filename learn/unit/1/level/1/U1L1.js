@@ -1,5 +1,6 @@
 
 function unlockUnitLevel(unit, level) {
+  // Cập nhật unlockedUnitLevels
   let unlocked = localStorage.getItem('unlockedUnitLevels');
   unlocked = unlocked ? JSON.parse(unlocked) : {};
 
@@ -9,11 +10,24 @@ function unlockUnitLevel(unit, level) {
 
   if (!unlocked[unit].includes(level)) {
     unlocked[unit].push(level);
-    unlocked[unit].sort((a,b) => a-b);
+    unlocked[unit].sort((a, b) => a - b);
   }
 
   localStorage.setItem('unlockedUnitLevels', JSON.stringify(unlocked));
   console.log(`Đã mở khóa Unit ${unit} Level ${level}`);
+
+  // Cập nhật luôn cho units (giảm 1 level)
+  let units = JSON.parse(localStorage.getItem('units'));
+  if (
+    units &&
+    units[unit - 1] &&
+    units[unit - 1].levels &&
+    units[unit - 1].levels[level - 1] // <-- sửa ở đây
+  ) {
+    units[unit - 1].levels[level - 1].state = 'unlock';
+    localStorage.setItem('units', JSON.stringify(units));
+    console.log(`Đã cập nhật units[${unit - 1}].levels[${level - 1}].state = 'unlock'`);
+  }
 }
 
 window.handleBackButtonClick = function() {
@@ -177,7 +191,6 @@ function displayQuestion() {
     document.getElementById("result-overlay").style.display = "flex";
     let units = JSON.parse(localStorage.getItem("units"));
     const { unit, level } = getUnitAndLevel();
-    units[0].levels[1].state = "unlock";
     localStorage.setItem("units", JSON.stringify(units));
 
     const totalWrong = wrongCount.reduce((sum, val) => sum + val, 0);
