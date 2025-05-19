@@ -33,8 +33,7 @@ export const questions = [
 ];
 
 export const questionLinks = [
-  "/lesson/unit1/level1",
-  "/lesson/unit1/level1",
-  "/lesson/unit1/level2",
-  "/lesson/unit1/level2",
+  "https://www.youtube.com/watch?v=xIP4FRn6k2w",
+  "https://www.youtube.com/watch?v=tOG3qvIMpK0",
+  "https://www.youtube.com/watch?v=px242b5fjII",
 ];

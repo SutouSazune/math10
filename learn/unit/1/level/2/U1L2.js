@@ -279,9 +279,9 @@ const wrongCount = new Array(questions.length).fill(0);
 
 // Bạn thay link tương ứng bài học ở đây nhé
 const questionLinks = [
+  "https://www.youtube.com/watch?v=IUkl4CPPNqs",
+  "https://chatgpt.com/c/682718c6-8534-8009-9e45-02af58bac928",
   "/lesson/unit1/level1",
-  "/lesson/unit1/level1",
-  "/lesson/unit1/level2",
   "/lesson/unit1/level2",
   "/lesson/unit1/level3",
   "/lesson/unit1/level3",

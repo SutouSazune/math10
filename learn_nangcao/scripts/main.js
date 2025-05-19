@@ -186,7 +186,7 @@ console.log("Unique Categories:", uniqueCategories); // Debug: In ra danh sách 
 function displayUnits() {
   let html = `
     <div style="display: flex; align-items: center; justify-content: space-between;">
-      <h1 style="margin: 0; font-size: 2.5rem;">Củng cố kiến thức toán 9 thi vào 10.</h1>
+      <h1 style="margin: 0; font-size: 2.5rem;">Thời điểm nước rút ôn thi vào 10.</h1>
       <a href="../learn/"
          class="btn-chung"
          style="

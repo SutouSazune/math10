@@ -174,16 +174,15 @@ const wrongCount = new Array(questions.length).fill(0);
 
 // Bạn thay link tương ứng bài học ở đây nhé
 const questionLinks = [
-  "/lesson/unit1/level1",
-  "/lesson/unit1/level1",
-  "/lesson/unit1/level2",
-  "/lesson/unit1/level2",
-  "/lesson/unit1/level3",
-  "/lesson/unit1/level3",
-  "/lesson/unit1/level4",
-  "/lesson/unit1/level4",
-  "/lesson/unit1/level5",
-  "/lesson/unit1/level5",
+  "https://www.youtube.com/watch?v=4Gv3gMgYTno",
+  "https://www.youtube.com/watch?v=4Gv3gMgYTno",
+  "https://loigiaihay.com/ly-thuyet-phuong-trinh-bac-nhat-hai-an-c44a5311.html",
+  "https://loigiaihay.com/ly-thuyet-phuong-trinh-bac-nhat-hai-an-c44a5311.html",
+  "https://loigiaihay.com/bai-tap-184335.html",
+  "https://loigiaihay.com/ly-thuyet-phuong-trinh-bac-nhat-hai-an-c44a5311.html",
+  "https://loigiaihay.com/ly-thuyet-phuong-trinh-bac-nhat-hai-an-c44a5311.html",
+  "https://loigiaihay.com/ly-thuyet-phuong-trinh-bac-nhat-hai-an-c44a5311.html",
+  "https://loigiaihay.com/ly-thuyet-phuong-trinh-bac-nhat-hai-an-c44a5311.html",
 ];
 
 function displayQuestion() {
@@ -233,16 +232,6 @@ function displayQuestion() {
 <div class="back-button-container">
     <button onclick="handleBackButtonClick()">← Quay về</button>
 </div>`;
-
-
-
-    wrongCount.forEach((count, i) => {
-      if (count > 0) {
-        detailHTML += `<li><a href="${
-          questionLinks[i]
-        }" target="_blank">Ôn bài cho câu ${i + 1}</a> (sai ${count} lần)</li>`;
-      }
-    });
     detailHTML += `</ul>`;
 
     const container = document.getElementById("result-detail");
