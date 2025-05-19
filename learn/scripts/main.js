@@ -531,7 +531,7 @@ function displayUnits() {
          style="
             margin-left: 16px;
             padding: 12px 28px;
-            background: linear-gradient(90deg,rgb(255, 7, 7),rgb(246, 66, 66));
+            background: linear-gradient(90deg,rgb(255, 189, 7),rgb(245, 213, 9));
             border-radius: 10px;
             box-shadow: 0 4px 12px rgba(255, 0, 0, 0.4);
             font-weight: bold;

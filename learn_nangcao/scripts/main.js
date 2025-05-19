@@ -2,16 +2,16 @@
 let units_nangcao = JSON.parse(localStorage.getItem("units_nangcao")) || [
   {
     id: 1,
-    name: "Chứng minh đẳng thức",
-    category: "Chứng minh đẳng thức và bất đẳng thức",
+    name: "Các phép biến đổi cơ bản và biến đổi đa thức",
+    category: "Rút gọn biểu thức",
     levels: [
       {
-        name: "Sử dụng định nghĩa",
+        name: "Các phép biến đổi cơ bản",
         state: "unlock",
         complete: "false",
       },
       {
-        name: "Biến đổi tương đương, biến đổi vế, tính chất bắc cầu",
+        name: "Biến đổi đa thức",
         state: "lock",
         complete: "false",
       },
@@ -19,16 +19,111 @@ let units_nangcao = JSON.parse(localStorage.getItem("units_nangcao")) || [
   },
   {
     id: 2,
-    name: "Chứng minh bất đẳng thức",
-    category: "Chứng minh đẳng thức và bất đẳng thức",
+    name: "Rút gọn biểu thức chứa căn thức và phân thức đại số",
+    category: "Rút gọn biểu thức",
     levels: [
       {
-        name: "Sử dụng định nghĩa, biến đổi tương đương",
+        name: "Rút gọn biểu thức chứa căn thức",
         state: "unlock",
         complete: "false",
       },
       {
-        name: "Áp dụng bất đẳng thức Cô-si, bất đẳng thức AM-GM",
+        name: "Rút gọn biểu thức chứa phân thức đại số",
+        state: "lock",
+        complete: "false",
+      },
+    ],
+  },
+  {
+    id: 3,
+    name: "Vận dụng",
+    category: "Rút gọn biểu thức",
+    levels: [
+      {
+        name: "Vận dụng",
+        state: "unlock",
+        complete: "false",
+      },
+    ],
+  },
+  {
+    id: 4,
+    name: "Phương trình, Hệ phương trình bậc nhất 1 ẩn",
+    category: "Giải phương trình, hệ phương trình bậc nhất, bậc hai",
+    levels: [
+      {
+        name: "Phương trình bậc nhất 1 ẩn",
+        state: "unlock",
+        complete: "false",
+      },
+      {
+        name: "Hệ phương trình bậc nhất 1 ẩn",
+        state: "lock",
+        complete: "false",
+      },
+    ],
+  },
+  {
+    id: 5,
+    name: "Phương trình, Hệ phương trình bậc nhất 2 ẩn",
+    category: "Giải phương trình, hệ phương trình bậc nhất, bậc hai",
+    levels: [
+      {
+        name: "Phương trình bậc nhất 2 ẩn",
+        state: "unlock",
+        complete: "false",
+      },
+      {
+        name: "Hệ phương trình bậc nhất hỗn hợp",
+        state: "lock",
+        complete: "false",
+      },
+      {
+        name: "Giải bằng phương pháp thế, cộng đại số",
+        state: "lock",
+        complete: "false",
+      },
+    ],
+  },
+  {
+    id: 6,
+    name: "Các cách chứng minh",
+    category: "Chứng minh biểu thức có giá trị nguyên",
+    levels: [
+      {
+        name: "Chứng minh bằng phép chia hết",
+        state: "unlock",
+        complete: "false",
+      },
+      {
+        name: "Chứng minh bằng phép quy nạp hoặc tính chất đặc biệt",
+        state: "lock",
+        complete: "false",
+      },
+    ],
+  },
+  {
+    id: 7,
+    name: "Lập phương trình, hệ phương trình",
+    category: "Giải bài toán bằng cách lập phương trình",
+    levels: [
+      {
+        name: "Dạng lãi kép, lãi suất, giảm giá kép",
+        state: "unlock",
+        complete: "false",
+      },
+      {
+        name: "Dạng vòi nước, năng suất, công việc",
+        state: "lock",
+        complete: "false",
+      },
+      {
+        name: "Dạng thời gian, quãng đường, vận tốc",
+        state: "lock",
+        complete: "false",
+      },
+      {
+        name: "Dạng nước chảy xuôi, nước chảy ngược",
         state: "lock",
         complete: "false",
       },
@@ -466,11 +561,35 @@ function saveScrollPosition() {
 //     const rightSection = document.querySelector('.right-section');
 //     rightSection.innerHTML = html;
 // }
+function showWarningModalAgain() {
+  localStorage.removeItem("hideWarningModal");
+  const modal = document.getElementById("alert-modal");
+  if (modal) modal.style.display = "flex";
+}
+
 document.addEventListener("DOMContentLoaded", function () {
   const units_nangcaoList = document.getElementById("units_nangcao-list");
+    const modal = document.getElementById("alert-modal");
+    const okBtn = document.getElementById("ok-btn");
+    const dontShowAgainBtn = document.getElementById("dont-show-again-btn");
+
+    // Kiểm tra localStorage
+    if (localStorage.getItem("hideWarningModal") === "true") {
+      modal.style.display = "none";
+    }
+
+    okBtn.addEventListener("click", () => {
+      modal.style.display = "none";
+    });
+
+    dontShowAgainBtn.addEventListener("click", () => {
+      localStorage.setItem("hideWarningModal", "true");
+      modal.style.display = "none";
+    });
+
 
   if (!units_nangcaoList) {
-    console.error("Element with id 'units_nangcao-list' not found in the DOM.");
+    console.warning("Element with id 'units_nangcao-list' not found in the DOM.");
     return;
   }
 
